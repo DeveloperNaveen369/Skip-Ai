@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_gravity="center_horizontal"
+
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/floating_border_rounded"
+        android:gravity="center_horizontal"
+        android:layout_marginHorizontal="15dp"
+        android:orientation="vertical">
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_marginTop="2dp"
+            android:layout_height="wrap_content"
+            android:background="@color/black"
+            android:layout_marginHorizontal="8sp"
+            android:scrollbars="none"
+            android:id="@+id/opctions_view"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/Ask_ai_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ask AI"
+                    android:textColor="@color/white"
+                    android:clickable="true"
+                    android:enabled="true"
+                    android:checkable="false"
+                    app:chipBackgroundColor="#212121"
+                    app:chipIcon="@drawable/baseline_bolt_24"
+                    app:chipIconVisible="true"
+                    app:chipIconTint="@color/white"
+                    android:layout_marginHorizontal="2dp"
+
+                    />
+                <com.google.android.material.chip.Chip
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Summarize"
+                    android:textColor="@color/white"
+                    android:clickable="true"
+                    app:chipBackgroundColor="#212121"
+                    app:chipIcon="@drawable/summ"
+                    app:chipIconVisible="true"
+                    app:chipIconTint="@color/white"
+                    android:id="@+id/summarize_btn"
+                    android:layout_marginHorizontal="2dp"
+
+                    />
+                <com.google.android.material.chip.Chip
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Simplify"
+                    android:textColor="@color/white"
+                    android:clickable="true"
+                    app:chipBackgroundColor="#212121"
+                    app:chipIcon="@drawable/simplify"
+                    app:chipIconVisible="true"
+                    android:id="@+id/simplify_btn"
+                    app:chipIconTint="@color/white"
+                    android:layout_marginHorizontal="2dp"
+
+                    />
+                <com.google.android.material.chip.Chip
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Translate"
+                    android:textColor="@color/white"
+                    android:clickable="true"
+                    android:id="@+id/translation_btn"
+                    app:chipBackgroundColor="#212121"
+                    app:chipIcon="@drawable/translation"
+                    app:chipIconVisible="true"
+                    app:chipIconTint="@color/white"
+                    android:layout_marginHorizontal="2dp"
+
+                    />
+
+
+
+            </LinearLayout>
+        </HorizontalScrollView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:orientation="horizontal"
+            android:id="@+id/loading_view"
+            android:layout_marginTop="3dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="31dp"
+                android:layout_marginHorizontal="8sp"
+                android:background="@drawable/white_rounded_broader"
+                android:text="Thinking......."
+                android:textColor="@color/white"
+
+
+                android:gravity="center_vertical"
+                android:textSize="17sp"
+                android:layout_weight="2"
+                android:backgroundTint="#212121"
+                android:paddingHorizontal="5dp"
+                >
+
+            </TextView>
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_height="30dp"
+                android:visibility="visible"
+                >
+
+            </ProgressBar>
+
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8sp"
+            android:padding="6sp"
+            android:id="@+id/response_view"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:id="@+id/respone_text_view"
+                android:textSize="17sp"
+                android:padding="8dp"
+                android:background="@drawable/white_rounded_broader"
+                android:backgroundTint="#212121"
+                >
+
+            </TextView>
+        </ScrollView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8sp"
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:textColor="@color/white"
+                android:layout_weight="1"
+
+                android:gravity="center_vertical"
+                android:id="@+id/selected_view"
+                >
+
+            </TextView>
+            <com.google.android.material.chip.Chip
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="close"
+                android:layout_weight="0.4"
+                android:textColor="@color/white"
+                android:clickable="true"
+                android:focusable="true"
+                android:checkable="false"
+                app:chipBackgroundColor="#212121"
+                app:chipIcon="@drawable/close"
+                app:chipIconVisible="true"
+                android:enabled="true"
+                app:chipIconTint="@color/white"
+                android:gravity="end"
+                android:layout_marginHorizontal="4dp"
+                android:id="@+id/close_btn"
+
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

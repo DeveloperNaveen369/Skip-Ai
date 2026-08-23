@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Skip Ai</string>
+    <string-array name="languages">
+        <item>English</item>
+        <item>Hindi</item>
+        <item>Chinese</item>
+        <item>Spanish</item>
+        <item>French</item>
+        <item>Russian</item>
+        <item>Urdu</item>
+        <item>Bengali</item>
+    </string-array>
+    <string name="using_steps"> 1. Give Permission to Display Over- Other Apps \n
+    2.Choose Default Translation language \n
+        3.Paste your own Open-routers Api key (free-version is enough for your daily queries)
+        4. Close Skip Ai(from recent-apps also)\n
+        5.Go to Settings >> Accessibility >> Skip Ai>> turn on Accessibility permission \n
+        6. test it by selecting some text through anywhere
+
+        Note:- (in some devices)if you open the app and close it then accessibility services turn automatically off , so enable it after closing Skip Ai app.
+
+    </string>
+</resources>
