@@ -9,11 +9,12 @@ Skip AI brings AI assistance directly into the app you're currently using. Selec
 
 
 <p align="center">
-  <img src="screenshots/home.png" width="220">
-  <img src="screenshots/ask-ai.png" width="220">
+  <img src="screenshots/photo_6078110861605147320_y.jpg" width="220">
+  <img src="screenshots/photo_6078110861605147321_y.jpg" width="220">
 
-  <img src="screenshots/summarize.png" width="220">
-  <img src="screenshots/translate.png" width="220">
+  <img src="screenshots/photo_6078110861605147322_y.jpg" width="220">
+  <img src="screenshots/photo_6078110861605147323_y.jpg" width="220">
+  <img src="screenshots/photo_6078110861605147324_y.jpg" width="220">
 </p>
 
 ## ✨ Features
@@ -77,7 +78,7 @@ Result is displayed to the user
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/Skip-AI.git
+git clone https://github.com/DeveloperNaveen369/Skip-Ai.git
 ```
 
 ### 2. Open in Android Studio
