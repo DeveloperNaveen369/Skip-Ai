@@ -1,4 +1,5 @@
-name: Build Signed Release APK
+
+name: Build Signed Release APK + AAB
 
 on:
   workflow_dispatch:
@@ -26,21 +27,38 @@ jobs:
       - name: Make Gradle executable
         run: chmod +x ./gradlew
 
-      - name: Build signed release APK
+      - name: Build signed release APK and AAB
         env:
           KEYSTORE_FILE: ${{ github.workspace }}/skip-ai-release.jks
           KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
           KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
           KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
-        run: ./gradlew assembleRelease bundleRelease
+        run: |
+          ./gradlew assembleRelease bundleRelease
+
+      - name: Check generated APK and AAB
+        run: |
+          echo "=== APK files ==="
+          find app/build/outputs/apk -type f -print || true
+
+          echo "=== AAB files ==="
+          find app/build/outputs/bundle -type f -print || true
 
       - name: Rename APK
         run: |
           mv app/build/outputs/apk/release/app-release.apk \
              app/build/outputs/apk/release/Skip-AI-v1.0.0.apk
 
-      - name: Upload signed APK
+      - name: Rename AAB
+        run: |
+          mv app/build/outputs/bundle/release/app-release.aab \
+             app/build/outputs/bundle/release/Skip-AI-v1.0.0.aab
+
+      - name: Upload APK and AAB
         uses: actions/upload-artifact@v4
         with:
           name: Skip-AI-v1.0.0
-          path: app/build/outputs/apk/release/Skip-AI-v1.0.0.apk
+          path: |
+            app/build/outputs/apk/release/Skip-AI-v1.0.0.apk
+            app/build/outputs/bundle/release/Skip-AI-v1.0.0.aab
+
