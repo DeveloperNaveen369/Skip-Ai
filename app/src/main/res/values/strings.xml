@@ -20,4 +20,33 @@
         Note:- (in some devices)if you open the app and close it then accessibility services turn automatically off , so enable it after closing Skip Ai app.
 
     </string>
+    <string name="accessibility_service_description">
+Skip AI is an open-source AI assistant designed to provide quick AI tools directly where you are working.
+
+Accessibility Service is required because Android provides selected-text and active-window information through the Accessibility framework. Skip AI uses this capability only for the following purposes:
+
+• Detect text that you intentionally select in another application.
+• Read the selected text so you can use Ask AI, Summarize, Simplify, or Translate.
+• Identify the text input that currently has focus when you choose Write Response.
+• Insert the generated AI response into that focused text input when you explicitly choose Write Response.
+• Display the Skip AI floating assistant over the application you are currently using.
+
+Skip AI does NOT use Accessibility Service to:
+
+• Perform gestures, swipes, or touch gestures.
+• Automatically click buttons or controls in other applications.
+• Navigate to Home, Back, or Recents.
+• Take screenshots.
+• Access or control the camera.
+• Control device hardware.
+• Approve payments or perform financial transactions.
+• Automatically perform actions in other applications without your interaction.
+• Continuously send your entire screen to an AI service.
+
+Your selected text is processed only when you request an AI operation. Selected text may be sent to your configured AI provider to generate the requested response. AI providers may process information according to their own privacy policies and terms.
+
+Skip AI is an open-source project. Its source code is publicly available on GitHub so users and developers can inspect how the application works, including its Accessibility Service implementation.
+
+You remain in control of the Accessibility permission. Skip AI requires you to explicitly enable the Accessibility Service in Android Settings, and you can disable it at any time from your device settings.
+</string>
 </resources>

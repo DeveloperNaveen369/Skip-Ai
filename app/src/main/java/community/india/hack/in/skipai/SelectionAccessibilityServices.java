@@ -1,6 +1,7 @@
 package community.india.hack.in.skipai;
 
 import android.accessibilityservice.AccessibilityService;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
@@ -10,9 +11,14 @@ import community.india.hack.in.skipai.manager.FloatingWindowManager;
 public class SelectionAccessibilityServices extends AccessibilityService {
 
     private FloatingWindowManager floatingWindowManager;
+    private AccessibilityNodeInfo focusedInputNode;
     @Override
     public void onAccessibilityEvent(AccessibilityEvent event) {
         if (event==null) return;
+        focusedInputNode = event.getSource();
+        AccessibilityNodeInfo root = getRootInActiveWindow();
+        if(root!=null)
+            focusedInputNode = root.findFocus(AccessibilityNodeInfo.FOCUS_INPUT);
         if (! isValidSelection(event)) return;
 
         int type = event.getEventType();
@@ -69,5 +75,13 @@ public class SelectionAccessibilityServices extends AccessibilityService {
 
 
 
+    }
+    public void writeResponseToInput(String response){
+        if (focusedInputNode==null) return;
+
+        Bundle arguments = new Bundle();
+        arguments.putCharSequence(AccessibilityNodeInfo.ACTION_ARGUMENT_SET_TEXT_CHARSEQUENCE,response);
+
+        focusedInputNode.performAction(AccessibilityNodeInfo.ACTION_SET_TEXT,arguments);
     }
 }

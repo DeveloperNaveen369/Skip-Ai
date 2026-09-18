@@ -3,7 +3,11 @@
     android:accessibilityEventTypes="typeViewTextSelectionChanged"
     android:accessibilityFeedbackType="feedbackGeneric"
     android:canRetrieveWindowContent="true"
+    android:canControlMagnification="false"
+    android:canTakeScreenshot="false"
+
+    android:canPerformGestures="false"
     android:notificationTimeout="100"
-    android:description="@string/app_name"
+    android:description="@string/accessibility_service_description"
 
     />

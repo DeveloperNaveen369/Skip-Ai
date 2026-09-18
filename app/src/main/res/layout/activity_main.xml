@@ -6,331 +6,362 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/semi_black"
+    android:background="#0B0F14"
+    android:paddingTop="8dp"
     tools:context=".MainActivity">
 
-
-
-
-    
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:clipToPadding="false"
+        android:scrollbars="none">
 
-        >
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
-            >
+            android:paddingBottom="24dp">
+
+            <!-- Logo -->
             <ImageView
-                android:layout_width="100dp"
+                android:layout_width="110dp"
                 android:layout_height="70dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="10dp"
+                android:adjustViewBounds="true"
+                android:contentDescription="App Logo"
+                android:scaleType="centerInside"
+                android:src="@drawable/logo" />
 
-                android:layout_marginTop="10dp"
-                android:src="@drawable/logo"
-                >
-
-            </ImageView>
+            <!-- Permission Cards -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 android:orientation="horizontal"
-                >
+                android:paddingHorizontal="12dp">
+
+                <!-- Overlay Permission -->
                 <androidx.cardview.widget.CardView
-                    android:layout_width="0dp"
-                    android:layout_height="160dp"
-                    android:layout_weight="1"
-                    android:layout_marginHorizontal="17dp"
-
-                    android:background="@color/white"
-                    app:cardBackgroundColor="@color/semi_black"
-                    app:cardCornerRadius="14dp"
-                    app:cardElevation="7dp"
-
                     android:id="@+id/overlya_per_view"
+                    android:layout_width="0dp"
+                    android:layout_height="165dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="7dp"
+                    app:cardBackgroundColor="@color/semi_black"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="8dp">
 
-                    >
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:background="@drawable/floating_border_rounded"
                         android:layout_height="match_parent"
                         android:orientation="vertical"
-                        android:layout_margin="2dp"
+                        android:padding="2dp"
+                        android:background="@drawable/white_rounded_broader"
+                        android:backgroundTint="@color/semi_black"
                         >
+
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:padding="14dp"
                             android:text="Display Over Other Apps"
-                            android:padding="12dp"
                             android:textColor="@color/white"
-                            android:textStyle="italic"
-                            android:textSize="18dp"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:fontFamily="sans" />
 
-                            >
-
-                        </TextView>
+                        <View
+                            android:layout_width="35dp"
+                            android:layout_height="3dp"
+                            android:layout_marginStart="14dp"
+                            android:layout_marginTop="2dp"
+                            android:background="@color/orange" />
 
                         <com.google.android.material.chip.Chip
+                            android:id="@+id/overlay_per_btn"
                             android:layout_width="wrap_content"
-                            android:layout_height="54dp"
+                            android:layout_height="50dp"
                             android:layout_gravity="end"
-                            android:layout_marginTop="23dp"
-                            android:layout_marginHorizontal="12dp"
+                            android:layout_marginTop="28dp"
+                            android:layout_marginEnd="12dp"
                             android:checkable="false"
                             android:clickable="true"
-                            android:id="@+id/overlay_per_btn"
-                            android:text="check"
-                            app:chipIcon="@drawable/check_icon" />
+                            android:text="Check"
+                            android:textStyle="bold"
+                            app:chipIcon="@drawable/check_icon"
+                            app:chipIconTint="@color/white"
+                            app:chipBackgroundColor="@color/orange"
+                            app:chipCornerRadius="14dp" />
+
                     </LinearLayout>
 
-
                 </androidx.cardview.widget.CardView>
+
+                <!-- Accessibility Permission -->
                 <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
-                    android:layout_height="160dp"
+                    android:layout_height="165dp"
                     android:layout_weight="1"
-                    android:background="@color/white"
-                    app:cardCornerRadius="17dp"
-                    android:layout_margin="17dp"
+                    android:layout_marginStart="7dp"
                     app:cardBackgroundColor="@color/orange"
-                    app:cardElevation="7dp"
-                    >
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="8dp">
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="vertical"
-                        >
+                        android:padding="14dp">
+
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Accessibility Permission"
-                            android:padding="12dp"
                             android:textColor="@color/white"
-                            android:textStyle="italic"
-                            android:textSize="18dp"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:fontFamily="sans" />
 
-                            >
-
-                        </TextView>
+                        <View
+                            android:layout_width="35dp"
+                            android:layout_height="3dp"
+                            android:layout_marginTop="8dp"
+                            android:background="@color/white" />
 
                         <com.google.android.material.chip.Chip
+                            android:id="@+id/access_per_btn"
                             android:layout_width="wrap_content"
-                            android:layout_height="54dp"
+                            android:layout_height="50dp"
                             android:layout_gravity="end"
-                            android:layout_marginTop="23dp"
-                            android:layout_marginHorizontal="12dp"
+                            android:layout_marginTop="28dp"
                             android:checkable="false"
                             android:clickable="true"
-                            android:id="@+id/access_per_btn"
-                            android:text="check"
-                            app:chipIcon="@drawable/check_icon" />
+                            android:text="Check"
+                            android:textStyle="bold"
+                            app:chipIcon="@drawable/check_icon"
+                            app:chipIconTint="@color/orange"
+                            app:chipBackgroundColor="@color/white"
+                            app:chipCornerRadius="14dp" />
+
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
+
             </LinearLayout>
+
+            <!-- Language Selector -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="58dp"
+                android:layout_marginHorizontal="13dp"
+                android:layout_marginTop="18dp"
                 android:orientation="horizontal"
-                android:background="@drawable/floating_border_rounded"
-                android:layout_margin="12dp"
-                android:padding="2dp"
-                android:layout_gravity="center_vertical"
-                >
+                android:gravity="center_vertical"
+                android:padding="3dp"
+                android:background="@drawable/floating_border_rounded">
+
                 <TextView
                     android:layout_width="0dp"
-                    android:layout_height="44dp"
-                    android:text="Default Translation Language"
-                    android:layout_gravity="center_vertical|center_horizontal"
-                    android:gravity="center"
+                    android:layout_height="match_parent"
                     android:layout_weight="2"
+                    android:gravity="center_vertical"
+                    android:paddingStart="10dp"
+                    android:text="Default Translation Language"
                     android:textColor="@color/white"
-                    android:textStyle = "bold|italic"
-                    android:layout_marginHorizontal="5dp"
-                    >
-
-                </TextView>
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
 
                 <Spinner
-                    android:layout_width="0dp"
-                    android:layout_height="34dp"
-                    android:entries="@array/languages"
-                    android:layout_marginHorizontal="5dp"
-                    android:layout_gravity="center_vertical"
                     android:id="@+id/spinnerLang"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
                     android:layout_weight="1"
+                    android:layout_marginEnd="6dp"
                     android:background="@drawable/orange_rounded_border"
+                    android:entries="@array/languages" />
 
-
-
-                    >
-
-                </Spinner>
             </LinearLayout>
 
+            <!-- Information / GitHub Section -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="14dp"
-                android:orientation="horizontal"
-                >
+                android:layout_marginTop="18dp"
+                android:orientation="horizontal">
+
+                <!-- Left Buttons -->
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
-                    android:layout_marginHorizontal="20dp"
-                    android:orientation="vertical"
-                    >
+                    android:layout_marginStart="13dp"
+                    android:layout_marginEnd="7dp"
+                    android:orientation="vertical">
+
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-
-
-                        app:cardCornerRadius="12dp"
                         app:cardBackgroundColor="@color/orange"
-                        >
+                        app:cardCornerRadius="15dp"
+                        app:cardElevation="6dp">
+
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:orientation="vertical"
-                            android:padding="15dp"
-                            >
+                            android:padding="12dp">
+
                             <com.google.android.material.chip.Chip
-                                android:layout_width="match_parent"
-                                android:layout_height="54dp"
-                                app:chipBackgroundColor="@color/black"
-                                android:text="How to Use ?"
                                 android:id="@+id/how_btn"
-                                android:textColor="@color/white"
-                                app:chipIcon="@drawable/work_alert_24px"
-                                >
-
-                            </com.google.android.material.chip.Chip>
-                            <com.google.android.material.chip.Chip
                                 android:layout_width="match_parent"
-                                android:layout_height="54dp"
-                                app:chipBackgroundColor="@color/black"
-                                android:text="issues ?"
-                                android:gravity="center"
-                                android:id="@+id/issue_btn"
+                                android:layout_height="52dp"
+                                android:text="How to Use?"
                                 android:textColor="@color/white"
+                                android:textSize="14sp"
+                                android:textStyle="bold"
+                                app:chipBackgroundColor="@color/black"
+                                app:chipCornerRadius="12dp"
+                                app:chipIcon="@drawable/work_alert_24px"
+                                app:chipIconTint="@color/orange" />
+
+                            <com.google.android.material.chip.Chip
+                                android:id="@+id/issue_btn"
+                                android:layout_width="match_parent"
+                                android:layout_height="52dp"
+                                android:layout_marginTop="10dp"
+                                android:text="Issues?"
+                                android:textColor="@color/white"
+                                android:textSize="14sp"
+                                android:textStyle="bold"
+                                app:chipBackgroundColor="@color/black"
+                                app:chipCornerRadius="12dp"
                                 app:chipIcon="@drawable/problem_24px"
-                                >
-
-                            </com.google.android.material.chip.Chip>
-
-
+                                app:chipIconTint="@color/orange" />
 
                         </LinearLayout>
 
                     </androidx.cardview.widget.CardView>
 
                     <com.google.android.material.chip.Chip
-                        android:layout_width="match_parent"
-                        android:layout_height="54dp"
-                        android:layout_marginVertical="16dp"
-                        app:chipIcon="@drawable/policy_24px"
                         android:id="@+id/terms_btn"
-                        android:text="Terms &amp; Conditions">
+                        android:layout_width="186dp"
+                        android:layout_height="54dp"
+                        android:layout_marginTop="14dp"
+                        android:text="Terms &amp; Conditions"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:chipBackgroundColor="@color/orange"
+                        app:chipCornerRadius="13dp"
 
-                    </com.google.android.material.chip.Chip>
-
-
+                        app:chipIcon="@drawable/policy_24px"
+                        app:chipIconTint="@color/white" />
 
                 </LinearLayout>
 
-
+                <!-- GitHub Card -->
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/github_btn_card"
                     android:layout_width="0dp"
                     android:layout_height="250dp"
                     android:layout_weight="1"
-                    android:layout_marginHorizontal="20dp"
-                    app:cardCornerRadius="12dp"
-                    android:id="@+id/github_btn_card"
+                    android:layout_marginStart="7dp"
+                    android:layout_marginEnd="16dp"
                     app:cardBackgroundColor="@color/semi_black"
+                    app:cardCornerRadius="14dp"
+                    app:cardElevation="0dp">
 
-                    >
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_margin="2dp"
                         android:gravity="center"
-                        android:layout_gravity="center"
+                        android:orientation="vertical"
 
-                        android:background="@drawable/floating_border_rounded"
                         >
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:gravity="center"
                             android:rotation="90"
                             android:text="GITHUB"
                             android:textColor="@color/white"
-                            android:textSize="15dp">
+                            android:textSize="13sp"
+                            android:textStyle="bold"
+                            android:letterSpacing="0.15" />
 
-                        </TextView>
+                        <View
+                            android:layout_width="25dp"
+                            android:layout_height="2dp"
+                            android:layout_marginTop="22dp"
+                            android:background="@color/orange" />
 
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
 
             </LinearLayout>
+
+            <!-- API Key Section -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="13dp"
+                android:layout_marginTop="18dp"
                 app:cardBackgroundColor="@color/orange"
-                app:cardCornerRadius="12dp"
-                android:layout_margin="13dp"
-                app:cardElevation="10dp"
-                >
+                app:cardCornerRadius="15dp"
+                app:cardElevation="8dp">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
+                    android:padding="8dp">
 
-                    android:layout_marginHorizontal="6dp"
-                    >
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:background="@drawable/white_rounded_broader"
-                        android:gravity="center"
-                        android:hint="Paste Your API-KEY here"
-                        android:id="@+id/edit_api_view"
-                        android:textColorHint="@color/white"
-                        android:textColor="@color/white"
-                        android:textSize="17dp"
-                        android:padding="4dp"
-                        >
-
-                    </EditText>
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="40dp"
-                        android:text="get your open-router key, click here"
-                        android:layout_marginHorizontal="5dp"
-
-                        android:linksClickable="true"
-                        android:clickable="true"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:text="API KEY"
                         android:textColor="@color/white"
-                        android:textStyle="italic|bold"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:letterSpacing="0.08" />
 
-                        android:layout_gravity="end"
-                        android:id="@+id/get_key_url"
+                    <EditText
+                        android:id="@+id/edit_api_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:background="@drawable/white_rounded_broader"
                         android:gravity="center_vertical"
+                        android:hint="Paste your API key here"
+                        android:inputType="textPassword"
+                        android:paddingHorizontal="14dp"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/white"
+                        android:textSize="15sp" />
 
-                        >
-
-                    </TextView>
-
+                    <TextView
+                        android:id="@+id/get_key_url"
+                        android:layout_width="wrap_content"
+                        android:layout_height="38dp"
+                        android:layout_gravity="end"
+                        android:clickable="true"
+                        android:gravity="center"
+                        android:paddingHorizontal="6dp"
+                        android:text="Get your OpenRouter key  →"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        android:textStyle="bold|italic" />
 
                 </LinearLayout>
+
             </androidx.cardview.widget.CardView>
+
         </LinearLayout>
+
     </ScrollView>
 
 </LinearLayout>

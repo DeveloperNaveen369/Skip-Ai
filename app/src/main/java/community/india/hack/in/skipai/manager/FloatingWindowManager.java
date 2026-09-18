@@ -30,6 +30,7 @@ import com.google.android.material.chip.Chip;
 import community.india.hack.in.skipai.MarkDownManager;
 import community.india.hack.in.skipai.R;
 
+import community.india.hack.in.skipai.SelectionAccessibilityServices;
 import community.india.hack.in.skipai.models.AiOptions;
 import community.india.hack.in.skipai.models.AiResponseListener;
 import android.view.animation.OvershootInterpolator;
@@ -51,8 +52,9 @@ public class FloatingWindowManager {
     ScrollView Response_view;
     TextView Response_text_view;
     TextView Selected_text_view;
+    private LinearLayout bottom_view;
     private Chip ask_ai_btn;
-    private Chip sumr_btn,trans_btn,simplify_btn;
+    private Chip sumr_btn,trans_btn,simplify_btn,write_btn;
     private  int maxHeight;
     private int displayHeight;
 
@@ -78,9 +80,14 @@ public class FloatingWindowManager {
 
     private final Handler handler = new Handler(Looper.getMainLooper());
     private final AiManager aiManager = new AiManager();
+    private final SelectionAccessibilityServices services;
+    private Boolean write = false;
 
-    public  FloatingWindowManager(Context context){
+    public  FloatingWindowManager(SelectionAccessibilityServices services){
+        this.services = services;
+        Context context = services;
         this.context = new ContextThemeWrapper(context,R.style.Theme_SkipAi);
+
         windowManager = (WindowManager)context.getSystemService(Context.WINDOW_SERVICE);
 
     }
@@ -116,7 +123,7 @@ public class FloatingWindowManager {
         opctions_view.setVisibility(View.GONE);
         Response_view.setVisibility(View.GONE);
         Loading_view.setVisibility(View.VISIBLE);
-
+        bottom_view.setVisibility((View.GONE));
         currentWindowState = WindowState.LOADING;
     }
     private void showResponseState(String response){
@@ -167,6 +174,8 @@ public class FloatingWindowManager {
         sumr_btn = floatingview.findViewById(R.id.summarize_btn);
         trans_btn = floatingview.findViewById(R.id.translation_btn);
         simplify_btn  = floatingview.findViewById(R.id.simplify_btn);
+        bottom_view = floatingview.findViewById(R.id.bottom_view);
+        write_btn = floatingview.findViewById(R.id.write_btn);
 
         opctions_view.smoothScrollTo(500,0);
         opctions_view.smoothScrollBy(200,0);
@@ -187,6 +196,10 @@ public class FloatingWindowManager {
         });
         trans_btn.setOnClickListener(v->{
             requestAiResponse(AiOptions.TRANSLATE);
+        });
+        write_btn.setOnClickListener(v->{
+            write = true;
+            requestAiResponse(AiOptions.ASK_AI);
         });
 
         Selected_text_view.setOnTouchListener((v,event)->{
@@ -282,6 +295,7 @@ public class FloatingWindowManager {
         opctions_view.setVisibility(View.GONE);
         Loading_view.setVisibility(View.GONE);
         Response_view.setVisibility(View.VISIBLE);
+        bottom_view.setVisibility(View.VISIBLE);
 //        Response_text_view.setText(responseText);
         MarkDownManager markDownManager = new MarkDownManager(context);
         markDownManager.show(responseText,Response_text_view);
@@ -316,12 +330,21 @@ public class FloatingWindowManager {
         Response_view.setVisibility(View.GONE);
         currentWindowState = WindowState.OPCTIONS;
     }
-    private void requestAiResponse(AiOptions options){
+    private void requestAiResponse(AiOptions options ){
 
         showLoadingState();
         aiManager.getResponse(context,options, selectedText, new AiManagerLIstener() {
             @Override
             public void onSucess(String response) {
+                if(write){ services.writeResponseToInput(response);
+                    write = false;
+                    bottom_view.setVisibility(View.VISIBLE);
+                    currentWindowState = WindowState.OPCTIONS;
+                    hideFloatingWindow();
+
+                    return;
+                }
+
                showResponseState(response);
             }
 

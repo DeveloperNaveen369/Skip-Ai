@@ -19,7 +19,7 @@ public class PromptBuilder {
         if(lang==null) lang = "English";
         String rules = "• Never ask questions.\n" +
                 "• Never require follow-up messages.\n" +
-                "• Keep responses short and useful.\n" +
+                "• Keep responses short,beautiful and useful.\n" +
                 "• Cover reasonable interpretations when needed.\n" +
                 "• Prioritize accuracy over completeness.\n" +
                 "• Never guess.\n" +
@@ -27,7 +27,7 @@ public class PromptBuilder {
                 "• Avoid unnecessary text.\n" +
                 "• Provide the answer immediately.\n" +
                 "• End the response after answering.\n"+
-                "• You are Skip Ai, it's your identity.";
+                "• when ask about you -> then read https://github.com/DeveloperNaveen369/Skip-Ai  , and provide possible response";
 
 
 

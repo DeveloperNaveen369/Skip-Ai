@@ -4,193 +4,252 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_gravity="center_horizontal"
-
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:paddingVertical="6dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/floating_border_rounded"
+        android:orientation="vertical"
         android:gravity="center_horizontal"
         android:layout_marginHorizontal="15dp"
-        android:orientation="vertical">
+        android:paddingTop="6dp"
+        android:paddingBottom="8dp"
+        android:background="@drawable/white_rounded_broader"
+        android:elevation="12dp">
+
+        <!-- ACTION CHIPS -->
         <HorizontalScrollView
-            android:layout_width="match_parent"
-            android:layout_marginTop="2dp"
-            android:layout_height="wrap_content"
-            android:background="@color/black"
-            android:layout_marginHorizontal="8sp"
-            android:scrollbars="none"
             android:id="@+id/opctions_view"
-            >
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginTop="2dp"
+            android:scrollbars="none"
+            android:clipToPadding="false"
+            android:paddingHorizontal="2dp">
+
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                >
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
                 <com.google.android.material.chip.Chip
                     android:id="@+id/Ask_ai_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="3dp"
                     android:text="Ask AI"
-                    android:textColor="@color/white"
+                    android:textColor="#FFFFFF"
+                    android:textSize="13sp"
                     android:clickable="true"
+                    android:focusable="true"
                     android:enabled="true"
                     android:checkable="false"
-                    app:chipBackgroundColor="#212121"
+                    app:chipBackgroundColor="#2563EB"
                     app:chipIcon="@drawable/baseline_bolt_24"
                     app:chipIconVisible="true"
-                    app:chipIconTint="@color/white"
-                    android:layout_marginHorizontal="2dp"
+                    app:chipIconTint="#FFFFFF"
+                    app:chipCornerRadius="18dp"
+                    app:chipMinHeight="38dp"
+                    app:chipStrokeWidth="0dp"
+                    app:rippleColor="#332563EB" />
 
-                    />
                 <com.google.android.material.chip.Chip
-
+                    android:id="@+id/summarize_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="3dp"
                     android:text="Summarize"
-                    android:textColor="@color/white"
+                    android:textColor="#202124"
+                    android:textSize="13sp"
                     android:clickable="true"
-                    app:chipBackgroundColor="#212121"
+                    android:focusable="true"
+                    app:chipBackgroundColor="#F3F4F6"
                     app:chipIcon="@drawable/summ"
                     app:chipIconVisible="true"
-                    app:chipIconTint="@color/white"
-                    android:id="@+id/summarize_btn"
-                    android:layout_marginHorizontal="2dp"
+                    app:chipIconTint="#374151"
+                    app:chipCornerRadius="18dp"
+                    app:chipMinHeight="38dp"
+                    app:chipStrokeColor="#E5E7EB"
+                    app:chipStrokeWidth="1dp"
+                    app:rippleColor="#1A2563EB" />
 
-                    />
                 <com.google.android.material.chip.Chip
-
+                    android:id="@+id/simplify_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="3dp"
                     android:text="Simplify"
-                    android:textColor="@color/white"
+                    android:textColor="#202124"
+                    android:textSize="13sp"
                     android:clickable="true"
-                    app:chipBackgroundColor="#212121"
+                    android:focusable="true"
+                    app:chipBackgroundColor="#F3F4F6"
                     app:chipIcon="@drawable/simplify"
                     app:chipIconVisible="true"
-                    android:id="@+id/simplify_btn"
-                    app:chipIconTint="@color/white"
-                    android:layout_marginHorizontal="2dp"
+                    app:chipIconTint="#374151"
+                    app:chipCornerRadius="18dp"
+                    app:chipMinHeight="38dp"
+                    app:chipStrokeColor="#E5E7EB"
+                    app:chipStrokeWidth="1dp"
+                    app:rippleColor="#1A2563EB" />
 
-                    />
                 <com.google.android.material.chip.Chip
-
+                    android:id="@+id/translation_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="3dp"
                     android:text="Translate"
-                    android:textColor="@color/white"
+                    android:textColor="#202124"
+                    android:textSize="13sp"
                     android:clickable="true"
-                    android:id="@+id/translation_btn"
-                    app:chipBackgroundColor="#212121"
+                    android:focusable="true"
+                    app:chipBackgroundColor="#F3F4F6"
                     app:chipIcon="@drawable/translation"
                     app:chipIconVisible="true"
-                    app:chipIconTint="@color/white"
-                    android:layout_marginHorizontal="2dp"
-
-                    />
-
+                    app:chipIconTint="#374151"
+                    app:chipCornerRadius="18dp"
+                    app:chipMinHeight="38dp"
+                    app:chipStrokeColor="#E5E7EB"
+                    app:chipStrokeWidth="1dp"
+                    app:rippleColor="#1A2563EB" />
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/write_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="3dp"
+                    android:text="Write"
+                    android:textColor="#202124"
+                    android:textSize="13sp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:chipBackgroundColor="#F3F4F6"
+                    app:chipIcon="@drawable/simplify"
+                    app:chipIconVisible="true"
+                    app:chipIconTint="#374151"
+                    app:chipCornerRadius="18dp"
+                    app:chipMinHeight="38dp"
+                    app:chipStrokeColor="#E5E7EB"
+                    app:chipStrokeWidth="1dp"
+                    app:rippleColor="#1A2563EB" />
 
 
             </LinearLayout>
         </HorizontalScrollView>
+
+
+        <!-- LOADING -->
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="32dp"
-            android:orientation="horizontal"
             android:id="@+id/loading_view"
-            android:layout_marginTop="3dp"
-            >
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginHorizontal="8dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="8dp"
+            android:background="@drawable/white_rounded_broader">
+
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="31dp"
-                android:layout_marginHorizontal="8sp"
-                android:background="@drawable/white_rounded_broader"
-                android:text="Thinking......."
-                android:textColor="@color/white"
-
-
+                android:layout_width="0dp"
+                android:layout_height="36dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="8dp"
+                android:backgroundTint="#F8FAFC"
                 android:gravity="center_vertical"
-                android:textSize="17sp"
-                android:layout_weight="2"
-                android:backgroundTint="#212121"
-                android:paddingHorizontal="5dp"
-                >
-
-            </TextView>
+                android:paddingHorizontal="10dp"
+                android:text="Thinking..."
+                android:textColor="#374151"
+                android:textSize="15sp"
+                android:visibility="gone" />
 
             <ProgressBar
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:layout_height="30dp"
-                android:visibility="visible"
-                >
-
-            </ProgressBar>
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_marginEnd="6dp"
+                android:indeterminateTint="#2563EB"
+                android:visibility="visible" />
 
         </LinearLayout>
 
+
+        <!-- RESPONSE -->
         <ScrollView
+            android:id="@+id/response_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="8sp"
-            android:padding="6sp"
-            android:id="@+id/response_view"
-            >
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="4dp"
+            android:padding="0dp"
+            android:fillViewport="false"
+            android:scrollbars="none">
+
             <TextView
+                android:id="@+id/respone_text_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:id="@+id/respone_text_view"
-                android:textSize="17sp"
-                android:padding="8dp"
                 android:background="@drawable/white_rounded_broader"
-                android:backgroundTint="#212121"
-                >
+                android:backgroundTint="#F8FAFC"
+                android:padding="12dp"
+                android:textColor="#1F2937"
+                android:textSize="16sp"
+                android:lineSpacingExtra="2dp"
+                android:fontFamily="sans" />
 
-            </TextView>
         </ScrollView>
+
+
+        <!-- BOTTOM -->
         <LinearLayout
+            android:id="@+id/bottom_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="8sp"
+            android:layout_marginHorizontal="8dp"
+            android:gravity="center_vertical"
             android:orientation="horizontal"
-            >
+            android:paddingTop="2dp">
+
             <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:textColor="@color/white"
-                android:layout_weight="1"
-
-                android:gravity="center_vertical"
                 android:id="@+id/selected_view"
-                >
-
-            </TextView>
-            <com.google.android.material.chip.Chip
-
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="close"
-                android:layout_weight="0.4"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="8dp"
+
                 android:textColor="@color/white"
+                android:textSize="13sp"
+                android:maxLines="1"
+                android:ellipsize="end" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/close_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginHorizontal="2dp"
+                android:text="Close"
+                android:textColor="#374151"
+                android:textSize="13sp"
                 android:clickable="true"
                 android:focusable="true"
                 android:checkable="false"
-                app:chipBackgroundColor="#212121"
+                android:enabled="true"
+                android:gravity="center"
+                app:chipBackgroundColor="#F3F4F6"
                 app:chipIcon="@drawable/close"
                 app:chipIconVisible="true"
-                android:enabled="true"
-                app:chipIconTint="@color/white"
-                android:gravity="end"
-                android:layout_marginHorizontal="4dp"
-                android:id="@+id/close_btn"
+                app:chipIconTint="#6B7280"
+                app:chipCornerRadius="20dp"
+                app:chipMinHeight="40dp"
+                app:chipStrokeColor="#E5E7EB"
+                app:chipStrokeWidth="1dp"
+                app:rippleColor="#1AEF4444" />
 
-                />
         </LinearLayout>
 
     </LinearLayout>
-
-
-
 
 </LinearLayout>
