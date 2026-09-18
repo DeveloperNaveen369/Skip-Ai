@@ -1,4 +1,3 @@
-
 name: Build Signed Release APK + AAB
 
 on:
@@ -27,6 +26,29 @@ jobs:
       - name: Make Gradle executable
         run: chmod +x ./gradlew
 
+      - name: Show Git commit
+        run: |
+          echo "Commit being built:"
+          git log -1 --oneline
+
+      - name: Check versionCode in source
+        run: |
+          echo "=== versionCode references ==="
+          grep -R "versionCode" . \
+            --include="*.gradle" \
+            --include="*.gradle.kts" \
+            --exclude-dir=.gradle \
+            --exclude-dir=build \
+            || true
+
+          echo "=== versionName references ==="
+          grep -R "versionName" . \
+            --include="*.gradle" \
+            --include="*.gradle.kts" \
+            --exclude-dir=.gradle \
+            --exclude-dir=build \
+            || true
+
       - name: Build signed release APK and AAB
         env:
           KEYSTORE_FILE: ${{ github.workspace }}/skip-ai-release.jks
@@ -34,7 +56,7 @@ jobs:
           KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
           KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
         run: |
-          ./gradlew assembleRelease bundleRelease
+          ./gradlew clean assembleRelease bundleRelease
 
       - name: Check generated APK and AAB
         run: |
@@ -47,18 +69,17 @@ jobs:
       - name: Rename APK
         run: |
           mv app/build/outputs/apk/release/app-release.apk \
-             app/build/outputs/apk/release/Skip-AI-v1.0.0.apk
+             app/build/outputs/apk/release/Skip-AI-v1.0.1.apk
 
       - name: Rename AAB
         run: |
           mv app/build/outputs/bundle/release/app-release.aab \
-             app/build/outputs/bundle/release/Skip-AI-v1.0.0.aab
+             app/build/outputs/bundle/release/Skip-AI-v1.0.1.aab
 
       - name: Upload APK and AAB
         uses: actions/upload-artifact@v4
         with:
-          name: Skip-AI-v1.0.0
+          name: Skip-AI-v1.0.1
           path: |
-            app/build/outputs/apk/release/Skip-AI-v1.0.0.apk
-            app/build/outputs/bundle/release/Skip-AI-v1.0.0.aab
-
+            app/build/outputs/apk/release/Skip-AI-v1.0.1.apk
+            app/build/outputs/bundle/release/Skip-AI-v1.0.1.aab
