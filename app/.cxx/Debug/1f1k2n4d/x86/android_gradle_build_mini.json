@@ -1,0 +1,27 @@
+{
+  "buildFiles": [
+    "C:\\Users\\My PC\\StudioProjects\\Skip-Ai\\app\\src\\main\\cpp\\CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "C:\\Users\\My PC\\AppData\\Local\\Android\\Sdk\\cmake\\3.22.1\\bin\\ninja.exe",
+      "-C",
+      "C:\\Users\\My PC\\StudioProjects\\Skip-Ai\\app\\.cxx\\Debug\\1f1k2n4d\\x86",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "C:\\Users\\My PC\\AppData\\Local\\Android\\Sdk\\cmake\\3.22.1\\bin\\ninja.exe",
+    "-C",
+    "C:\\Users\\My PC\\StudioProjects\\Skip-Ai\\app\\.cxx\\Debug\\1f1k2n4d\\x86",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "qwen_native::@6890427a1f51a3e7e1df": {
+      "artifactName": "qwen_native",
+      "abi": "x86",
+      "output": "C:\\Users\\My PC\\StudioProjects\\Skip-Ai\\app\\build\\intermediates\\cxx\\Debug\\1f1k2n4d\\obj\\x86\\libqwen_native.so",
+      "runtimeFiles": []
+    }
+  }
+}

@@ -1,0 +1,7 @@
+[
+{
+  "directory": "C:/Users/My PC/StudioProjects/Skip-Ai/app/.cxx/Debug/1f1k2n4d/arm64-v8a",
+  "command": "C:\\Users\\MYPC~1\\AppData\\Local\\Android\\Sdk\\ndk\\282~1.136\\TOOLCH~1\\llvm\\prebuilt\\WINDOW~1\\bin\\CLANG_~1.EXE --target=aarch64-none-linux-android28 --sysroot=\"C:/Users/My PC/AppData/Local/Android/Sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/windows-x86_64/sysroot\" -Dqwen_native_EXPORTS -I\"C:/Users/My PC/StudioProjects/Skip-Ai/app/src/main/cpp/llama-include\" -I\"C:/Users/My PC/StudioProjects/Skip-Ai/app/src/main/cpp/ggml-include\" -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -fno-limit-debug-info  -fPIC -o CMakeFiles\\qwen_native.dir\\qwen_native.cpp.o -c \"C:\\Users\\My PC\\StudioProjects\\Skip-Ai\\app\\src\\main\\cpp\\qwen_native.cpp\"",
+  "file": "C:\\Users\\My PC\\StudioProjects\\Skip-Ai\\app\\src\\main\\cpp\\qwen_native.cpp"
+}
+]

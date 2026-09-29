@@ -66,6 +66,6 @@ public class PromptBuilder {
     }
 
     private static String getAskAiPrompt(String selectedText,String rules) {
-        return "question: "+selectedText+" ,keep the following rules in mind while answering , " +rules ;
+        return selectedText ;
     }
 }

@@ -1,0 +1,3 @@
+C:/Users/My PC/StudioProjects/Skip-Ai/app/.cxx/Debug/1f1k2n4d/armeabi-v7a/CMakeFiles/qwen_native.dir
+C:/Users/My PC/StudioProjects/Skip-Ai/app/.cxx/Debug/1f1k2n4d/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/Users/My PC/StudioProjects/Skip-Ai/app/.cxx/Debug/1f1k2n4d/armeabi-v7a/CMakeFiles/rebuild_cache.dir

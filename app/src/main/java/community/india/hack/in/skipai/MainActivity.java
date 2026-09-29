@@ -12,25 +12,32 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.util.Log;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-import androidx.security.crypto.MasterKey;
 
 import com.google.android.material.chip.Chip;
+import com.google.android.material.switchmaterial.SwitchMaterial;
+
+import org.jetbrains.annotations.NotNull;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
 
 import community.india.hack.in.skipai.manager.AiManager;
-import community.india.hack.in.skipai.manager.AiManagerLIstener;
-import community.india.hack.in.skipai.manager.OpenRouterManager;
-import community.india.hack.in.skipai.models.AiOptions;
+import community.india.hack.in.skipai.manager.OfflineAiManager;
+
+//import community.india.hack.in.skipai.manager.OfflineAiManager;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -41,6 +48,10 @@ public class MainActivity extends AppCompatActivity {
     TextView get_key_url;
     Chip how_btn,issue_btn,terms_btn;
     CardView github_btn;
+    Button download_model ;
+    ProgressBar download_progress_bar;
+    TextView download_per;
+    SwitchMaterial switchMaterial;
 
 
 
@@ -62,6 +73,25 @@ public class MainActivity extends AppCompatActivity {
         how_btn=findViewById(R.id.how_btn);
         issue_btn = findViewById(R.id.issue_btn);
         terms_btn = findViewById(R.id.terms_btn);
+
+        download_model  = findViewById(R.id.download_model_btn);
+        download_progress_bar = findViewById(R.id.download_progress_bar);
+        download_per = findViewById(R.id.download_percentage);
+
+        switchMaterial = findViewById(R.id.mode_switch);
+        AiManager aiManager = new AiManager();
+
+        OfflineAiManager offlineAi =  SkipAiApplication.getInstance().getOfflineAiManager();
+        boolean modelDownloaded = offlineAi.isModelDownloaded();
+        switchMaterial.setEnabled(modelDownloaded);
+        if (modelDownloaded){
+            switchMaterial.setChecked(true);
+            aiManager.setOfflineMode(true);
+
+        }else {
+            switchMaterial.setChecked(false);
+            aiManager.setOfflineMode(false);
+        }
 
         String key = user.get_saved_data();
         if(key!=null) Api_key_view.setText(key);
@@ -157,10 +187,144 @@ public class MainActivity extends AppCompatActivity {
             spinner.setSelection(pos);
         }
 
+        download_model.setOnClickListener(v->{
+            download_model.setEnabled(false);
+            download_progress_bar.setVisibility(View.VISIBLE);
+
+
+            String modelUrl = "https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct-GGUF/resolve/main/qwen2.5-0.5b-instruct-q4_k_m.gguf?download=true";
+
+            OfflineModelDownloader downloader = new OfflineModelDownloader(this);
+            downloader.download(modelUrl, new OfflineModelDownloader.DownloadListner() {
+                @Override
+                public void onProgress(int percent) {
+                    download_progress_bar.setProgress(percent);
+                    download_per.setText(percent+"%");
+
+                }
+
+                @Override
+                public Runnable onComplete(File file) {
+                    runOnUiThread(()->{
+                        download_progress_bar.setProgress(100);
+                        download_per.setText("100%");
+                        download_model.setText("Model Downloaded");
+                        download_model.setEnabled(false);
+                        download_model.setVisibility(View.VISIBLE);
+                        Log.d("OfflineMOdel", "onComplete: download completed ");
+                    });
+
+                    return null;
+                }
+
+                @Override
+                public void onError(Exception e) {
+                    download_model.setEnabled(true);
+                    download_progress_bar.setVisibility(View.GONE);
+                    download_per.setVisibility(View.GONE);
+                    Log.e(
+                            "OfflineModelDownload",
+                            "Download failed",
+                            e
+                    );
+                }
+            });
+        });
+
+        findViewById(R.id.test_ai).setOnClickListener(v->{
+            OfflineAiManager offlineAiManager = new OfflineAiManager(this);
+            Intent intent = new Intent(MainActivity.this, ChatUi.class);
+            startActivity(intent);
 
 
 
+//            if(offlineAiManager.isModelDownloaded()){
+//                Toast.makeText(this, "Trying to load ai ", Toast.LENGTH_SHORT).show();
+////                new Thread(()->{
+////                    try {
+////                        offlineAiManager.loadModel();
+////                        String response = offlineAiManager.generate("Hello!, Tell me about Your Self");
+////                        Log.d(
+////                                "OfflineAiTest",
+////                                "Response: " + response
+////                        );
+////                    } catch (Exception e) {
+////                        Log.e(
+////                                "OfflineAiTest",
+////                                "Offline AI error",
+////                                e
+////                        );
+////                    }
+////                }).start();
+//                QwenBridge.generate(
+//                        MainActivity.this,
+//                        "Explain what an Api is in one short sentence",
+//                        new QwenBridge.Callback() {
+//                            @Override
+//                            public void onToken(@NotNull String token) {
+//
+//                            }
+//
+//                            @Override
+//                            public void onSuccess(@NotNull String response) {
+//
+//                            }
+//
+//                            @Override
+//                            public void onError(@NotNull String error) {
+//
+//                            }
+//                        }
+//                );
+//            }else Toast.makeText(this, "Model Not Downloaded", Toast.LENGTH_SHORT).show();
+        });
 
+        switchMaterial.setOnCheckedChangeListener((buttonView, isChecked) -> {
+
+            aiManager.setOfflineMode(isChecked);
+        });
+//        new Thread(() -> {
+//            try {
+//                File modelFile = new File(getFilesDir(), "qwen.gguf");
+//
+//                if (!modelFile.exists()) {
+//                    InputStream input = getAssets().open("qwen.gguf");
+//                    FileOutputStream output = new FileOutputStream(modelFile);
+//
+//                    byte[] buffer = new byte[8192];
+//                    int length;
+//
+//                    while ((length = input.read(buffer)) != -1) {
+//                        output.write(buffer, 0, length);
+//                    }
+//
+//                    input.close();
+//                    output.close();
+//                }
+//
+//
+//                runOnUiThread(()->{
+//
+//                    QwenBridge.test(
+//                            MainActivity.this,
+//                            new QwenBridge.Callback() {
+//                                @Override
+//                                public void onSuccess(@NotNull String response) {
+//                                    Log.d("QWEN_TEST", "RESPONSE: " + response);
+//                                }
+//
+//                                @Override
+//                                public void onError(@NotNull String error) {
+//                                    Log.e("QWEN_TEST", "ERROR: " + error);
+//                                }
+//                            }
+//                    );
+//                });
+//
+//            } catch (Exception e) {
+//                Log.e("QWEN_TEST", "MODEL COPY FAILED", e);
+//            }
+//        }).start();
 
 
 

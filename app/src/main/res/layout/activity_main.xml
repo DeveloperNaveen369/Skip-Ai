@@ -360,6 +360,58 @@
 
             </androidx.cardview.widget.CardView>
 
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="15dp"
+                android:id="@+id/download_model_btn"
+                android:layout_marginBottom="15dp"
+                android:background="@color/white"
+                android:text="Download Gemma"
+                >
+
+            </Button>
+            <ProgressBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="100"
+                android:id="@+id/download_progress_bar"
+                android:progress="0"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:visibility="gone"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0%"
+                android:id="@+id/download_percentage"
+                android:visibility="visible"
+                android:textColor="@color/white"
+                />
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="15dp"
+                android:id="@+id/test_ai"
+                android:layout_marginBottom="15dp"
+                android:background="@color/white"
+                android:text="Try Ai"
+                >
+
+            </Button>
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/mode_switch"
+                android:defaultFocusHighlightEnabled="false"
+                android:focusedByDefault="false"
+                android:text="Offline Ai"
+                >
+
+            </com.google.android.material.switchmaterial.SwitchMaterial>
+
+
+
         </LinearLayout>
 
     </ScrollView>
