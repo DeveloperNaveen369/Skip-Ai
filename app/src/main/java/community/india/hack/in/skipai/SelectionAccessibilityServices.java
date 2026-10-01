@@ -1,10 +1,15 @@
 package community.india.hack.in.skipai;
 
 import android.accessibilityservice.AccessibilityService;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
+import android.widget.Toast;
 
 import community.india.hack.in.skipai.manager.FloatingWindowManager;
 
@@ -42,7 +47,23 @@ public class SelectionAccessibilityServices extends AccessibilityService {
     @Override
     public void onServiceConnected(){
         super.onServiceConnected();
-        floatingWindowManager = new FloatingWindowManager(this);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (!Settings.canDrawOverlays(this)) {
+                // Prompt user to grant "Display over other apps" permission
+                Intent intent = new Intent(
+                        Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
+                        Uri.parse("package:" + getPackageName())
+                );
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                Toast.makeText(this, "Skip Ai: Display over other apps permission", Toast.LENGTH_SHORT).show();
+                startActivity(intent);
+            } else {
+                // Permission already granted -> proceed to show floating window
+                floatingWindowManager = new FloatingWindowManager(this);
+            }
+        }
+
+
 
 
     }
@@ -83,5 +104,28 @@ public class SelectionAccessibilityServices extends AccessibilityService {
         arguments.putCharSequence(AccessibilityNodeInfo.ACTION_ARGUMENT_SET_TEXT_CHARSEQUENCE,response);
 
         focusedInputNode.performAction(AccessibilityNodeInfo.ACTION_SET_TEXT,arguments);
+    }
+    public String readResponseFromInput(){
+        if (focusedInputNode==null) return null;
+        Bundle arguments = new Bundle();
+        CharSequence charSequence = focusedInputNode.getText();
+        String text;
+        if (charSequence!=null)  text = charSequence.toString();
+        else text = null;
+        return  text;
+    }
+    public void checkOverlayPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (!Settings.canDrawOverlays(this)) {
+                // Prompt user to grant "Display over other apps" permission
+                Intent intent = new Intent(
+                        Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
+                        Uri.parse("package:" + getPackageName())
+                );
+                startActivity(intent);
+            } else {
+                // Permission already granted -> proceed to show floating window
+            }
+        }
     }
 }

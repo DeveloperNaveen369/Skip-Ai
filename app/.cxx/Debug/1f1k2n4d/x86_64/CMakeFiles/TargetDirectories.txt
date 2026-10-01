@@ -1,0 +1,3 @@
+C:/Users/My PC/StudioProjects/Skip-Ai/app/.cxx/Debug/1f1k2n4d/x86_64/CMakeFiles/qwen_native.dir
+C:/Users/My PC/StudioProjects/Skip-Ai/app/.cxx/Debug/1f1k2n4d/x86_64/CMakeFiles/edit_cache.dir
+C:/Users/My PC/StudioProjects/Skip-Ai/app/.cxx/Debug/1f1k2n4d/x86_64/CMakeFiles/rebuild_cache.dir

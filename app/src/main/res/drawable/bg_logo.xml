@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Solid or transparent background fill -->
+    <item>
+        <color android:color="@android:color/transparent" />
+    </item>
+
+    <!-- Logo item centered without stretching -->
+    <item
+        android:width="400dp"
+        android:height="400dp"
+        android:gravity="center">
+        <bitmap
+            android:src="@drawable/logo"
+            android:gravity="center" />
+    </item>
+</layer-list>

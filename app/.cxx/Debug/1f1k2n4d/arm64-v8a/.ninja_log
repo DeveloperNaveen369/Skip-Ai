@@ -1,0 +1,5 @@
+# ninja log v5
+0	19693	8125327462637817	CMakeFiles/qwen_native.dir/qwen_native.cpp.o	e5422d9e41b14186
+19703	20966	8125327472315994	C:/Users/gs252/StudioProjects/Skip-Ai/app/build/intermediates/cxx/Debug/1f1k2n4d/obj/arm64-v8a/libqwen_native.so	675a5c39298aae0a
+9	2046	8125442415365354	CMakeFiles/qwen_native.dir/qwen_native.cpp.o	e5422d9e41b14186
+2046	2308	8125442417395593	C:/Users/gs252/StudioProjects/Skip-Ai/app/build/intermediates/cxx/Debug/1f1k2n4d/obj/arm64-v8a/libqwen_native.so	675a5c39298aae0a

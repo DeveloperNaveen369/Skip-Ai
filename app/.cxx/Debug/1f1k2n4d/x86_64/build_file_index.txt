@@ -1,0 +1,1 @@
+C:\Users\My PC\StudioProjects\Skip-Ai\app\src\main\cpp\CMakeLists.txt
