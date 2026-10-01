@@ -10,16 +10,22 @@ import org.jetbrains.annotations.NotNull;
 
 import community.india.hack.in.skipai.QwenBridge;
 import community.india.hack.in.skipai.SkipAiApplication;
+import community.india.hack.in.skipai.UserSettings;
 import community.india.hack.in.skipai.models.AiOptions;
 import community.india.hack.in.skipai.models.AiResponseListener;
 import community.india.hack.in.skipai.utils.PromptBuilder;
 
 public class AiManager {
+    private  Context context = SkipAiApplication.getContext();
 
+    UserSettings user = new UserSettings(context);
 
     private  OpenRouterManager manager = new OpenRouterManager();
 //    private OfflineAiManager offlineAiManager = SkipAiApplication.getInstance().getOfflineAiManager();
-    private  static boolean offlineMode = false;
+    private  boolean offlineMode ;
+
+
+
 
 
     public  interface AiResponseListner{
@@ -28,11 +34,12 @@ public class AiManager {
 
     }
     public void setOfflineMode(boolean offlineMode){
-        this.offlineMode = offlineMode;
+//        this.offlineMode = user.getOfflinemode();
     }
     public void getResponse(Context context, AiOptions opctions , String selectedText , AiManagerLIstener lIstener){
             String prompt = PromptBuilder.getPrompt(opctions,selectedText,context);
         Log.d("prompt",prompt);
+        offlineMode = user.getOfflinemode();
 
         if (offlineMode){
             Log.d("offlinemode", "offline");

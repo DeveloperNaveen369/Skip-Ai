@@ -1393,7 +1393,7 @@ Java_community_india_hack_in_skipai_QwenBridge_nativeChatGenerate(
             llama_sampler_init_dist(1234)
     );
 
-    const int max_tokens = 256;
+    const int max_tokens = 320;
 
     std::string response;
 

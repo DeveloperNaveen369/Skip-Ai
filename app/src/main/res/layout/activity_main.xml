@@ -359,56 +359,202 @@
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_marginTop="15dp"
-                android:id="@+id/download_model_btn"
-                android:layout_marginBottom="15dp"
-                android:background="@color/white"
-                android:text="Download Gemma"
-                >
-
-            </Button>
-            <ProgressBar
+            <!-- Model & Mode Section Container -->
+            <LinearLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:max="100"
-                android:id="@+id/download_progress_bar"
-                android:progress="0"
-                style="?android:attr/progressBarStyleHorizontal"
-                android:visibility="gone"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0%"
-                android:id="@+id/download_percentage"
-                android:visibility="visible"
-                android:textColor="@color/white"
-                />
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_marginTop="15dp"
-                android:id="@+id/test_ai"
-                android:layout_marginBottom="15dp"
-                android:background="@color/white"
-                android:text="Try Ai"
-                >
+                android:layout_marginHorizontal="13dp"
+                android:layout_marginTop="18dp"
+                android:orientation="vertical">
 
-            </Button>
-            <com.google.android.material.switchmaterial.SwitchMaterial
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/mode_switch"
-                android:defaultFocusHighlightEnabled="false"
-                android:focusedByDefault="false"
-                android:text="Offline Ai"
-                >
+                <!-- Mode Selection Card (API vs Local LLM) -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/mode_switch_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@color/semi_black"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="6dp">
 
-            </com.google.android.material.switchmaterial.SwitchMaterial>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="13dp"
+                        android:id="@+id/mode_cont"
+                        android:background="@drawable/white_rounded_broader"
+                        android:backgroundTint="@color/semi_black">
+
+                        <!-- Section Label -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="EXECUTION ENGINE"
+                            android:textColor="@color/white"
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            android:letterSpacing="0.1" />
+
+                        <View
+                            android:layout_width="35dp"
+                            android:layout_height="3dp"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginBottom="14dp"
+                            android:background="@color/orange" />
+
+                        <!-- Vertical Mode Switch Layout -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <!-- Mode State Text Indicators -->
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/text_mode_api"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="• Cloud API"
+                                    android:textColor="@color/white"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/text_mode_local"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="4dp"
+                                    android:text="• On-Device Local LLM"
+                                    android:textColor="@color/white"
+                                    android:textSize="13sp"
+                                    android:textStyle="normal" />
+
+                            </LinearLayout>
+
+                            <!-- Scaled Vertical-Style Switch -->
+                            <com.google.android.material.switchmaterial.SwitchMaterial
+                                android:id="@+id/mode_switch"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:scaleX="1.25"
+                                android:scaleY="1.25"
+                                app:thumbTint="@color/white"
+                                app:trackTint="@color/orange" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <!-- Download & Progress Section Card -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    app:cardBackgroundColor="@color/orange"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="6dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:id="@+id/down_cont"
+                        android:padding="14dp">
+
+                        <!-- Download Button -->
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/download_model_btn"
+                            android:layout_width="match_parent"
+                            android:layout_height="54dp"
+                            android:text="Download Qwen 2.5"
+                            android:textColor="@color/orange"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            app:backgroundTint="@color/white"
+                            app:cornerRadius="12dp"
+                            app:icon="@drawable/check_icon"
+                            app:iconGravity="textStart"
+                            app:iconTint="@color/orange" />
+
+                        <!-- Dynamic Download Progress Container -->
+                        <LinearLayout
+                            android:id="@+id/progress_container"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:orientation="vertical"
+                            android:visibility="visible">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Model Download Status"
+                                    android:textColor="@color/white"
+                                    android:textSize="12sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/download_percentage"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="0%"
+                                    android:textColor="@color/white"
+                                    android:textSize="13sp"
+                                    android:textStyle="bold" />
+
+                            </LinearLayout>
+
+                            <ProgressBar
+                                android:id="@+id/download_progress_bar"
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="8dp"
+                                android:layout_marginTop="6dp"
+                                android:max="100"
+                                android:progress="0"
+                                android:progressDrawable="@android:drawable/progress_horizontal"
+                                android:progressTint="@color/white" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <!-- Chat Mode Action Button -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/test_ai"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:layout_marginTop="14dp"
+                    android:text="Launch Chat Mode"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:backgroundTint="@color/semi_black"
+                    app:cornerRadius="14dp"
+                    app:strokeColor="@color/orange"
+                    app:strokeWidth="1.5dp" />
+
+            </LinearLayout>
+
+
 
 
 

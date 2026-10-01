@@ -2,7 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "C:/Users/My PC/StudioProjects/Skip-Ai/app/build/intermediates/cxx/Debug/1f1k2n4d/obj/arm64-v8a/libqwen_native.so"
+			"path" : "C:/Users/gs252/StudioProjects/Skip-Ai/app/build/intermediates/cxx/Debug/1f1k2n4d/obj/arm64-v8a/libqwen_native.so"
 		}
 	],
 	"backtrace" : 1,
@@ -62,11 +62,11 @@
 			[
 				{
 					"backtrace" : 3,
-					"path" : "C:/Users/My PC/StudioProjects/Skip-Ai/app/src/main/cpp/llama-include"
+					"path" : "C:/Users/gs252/StudioProjects/Skip-Ai/app/src/main/cpp/llama-include"
 				},
 				{
 					"backtrace" : 3,
-					"path" : "C:/Users/My PC/StudioProjects/Skip-Ai/app/src/main/cpp/ggml-include"
+					"path" : "C:/Users/gs252/StudioProjects/Skip-Ai/app/src/main/cpp/ggml-include"
 				}
 			],
 			"language" : "CXX",
@@ -76,7 +76,7 @@
 			],
 			"sysroot" : 
 			{
-				"path" : "C:/Users/My PC/AppData/Local/Android/Sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/windows-x86_64/sysroot"
+				"path" : "C:/Users/gs252/AppData/Local/Android/Sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/windows-x86_64/sysroot"
 			}
 		}
 	],
@@ -91,12 +91,12 @@
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "\"C:\\Users\\My PC\\StudioProjects\\Skip-Ai\\app\\src\\main\\cpp\\..\\jniLibs\\arm64-v8a\\libllama.so\"",
+				"fragment" : "C:\\Users\\gs252\\StudioProjects\\Skip-Ai\\app\\src\\main\\cpp\\..\\jniLibs\\arm64-v8a\\libllama.so",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "\"C:\\Users\\My PC\\AppData\\Local\\Android\\Sdk\\ndk\\28.2.13676358\\toolchains\\llvm\\prebuilt\\windows-x86_64\\sysroot\\usr\\lib\\aarch64-linux-android\\28\\liblog.so\"",
+				"fragment" : "C:\\Users\\gs252\\AppData\\Local\\Android\\Sdk\\ndk\\28.2.13676358\\toolchains\\llvm\\prebuilt\\windows-x86_64\\sysroot\\usr\\lib\\aarch64-linux-android\\28\\liblog.so",
 				"role" : "libraries"
 			},
 			{
@@ -107,7 +107,7 @@
 		"language" : "CXX",
 		"sysroot" : 
 		{
-			"path" : "C:/Users/My PC/AppData/Local/Android/Sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/windows-x86_64/sysroot"
+			"path" : "C:/Users/gs252/AppData/Local/Android/Sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/windows-x86_64/sysroot"
 		}
 	},
 	"name" : "qwen_native",

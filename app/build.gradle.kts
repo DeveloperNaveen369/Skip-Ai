@@ -97,7 +97,7 @@ dependencies {
 
 //    implementation("dev.ffmpegkit-maintained:llama-android:0.1.1")
 
-
+    implementation("com.airbnb.android:lottie:6.4.0")
     implementation("com.google.mediapipe:tasks-genai:0.10.24")
 }
 // implementation("io.noties.markwon:ext-strikethrough:4.6.2")

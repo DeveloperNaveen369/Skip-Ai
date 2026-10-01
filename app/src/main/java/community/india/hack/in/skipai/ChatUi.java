@@ -1,16 +1,24 @@
 package community.india.hack.in.skipai;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.SubMenu;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,6 +34,10 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.airbnb.lottie.LottieAnimationView;
+import com.airbnb.lottie.LottieDrawable;
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.navigation.NavigationView;
 
@@ -41,6 +53,7 @@ public class ChatUi extends AppCompatActivity {
     private ScrollView messageScrollview;
     private LinearLayout linearLayout;
     private Chip send_btn, menu_btn;
+    MaterialCardView new_chat_btn,home_btn;
     private ChatController chatController;
     private DrawerLayout drawerLayout;
     private final Map<Integer, String> drawerChatIds = new HashMap<>();
@@ -48,6 +61,9 @@ public class ChatUi extends AppCompatActivity {
     ChatManager chatManager;
     NavigationView navigationView;
     private static final int NEW_CHAT_ID = 10001;
+    public Boolean cureentisEmpty;
+    ImageView imageView ;
+    LottieAnimationView lottieView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +80,29 @@ public class ChatUi extends AppCompatActivity {
         chatManager = app.getChatManager();
         drawerLayout = findViewById(R.id.main);
         navigationView = findViewById(R.id.nav_view);
+        imageView = findViewById(R.id.chat_logo);
+        View header = navigationView.getHeaderView(0);
+
+        new_chat_btn = header.findViewById(R.id.new_chat_btn);
+        home_btn = header.findViewById(R.id.home_btn);
+        lottieView = new LottieAnimationView(linearLayout.getContext());
+        new_chat_btn.setOnClickListener(v->{
+            Chat chat = chatManager.getActiveChat();
+            if (chat == null || chat.getMessages().size()==0) {
+                return;
+            }
+
+            chatManager.createNewChat();
+            loadChatsIntoDrawer();
+            loadActiveChats();
+            drawerLayout.closeDrawer(GravityCompat.START);
+
+        });
+        home_btn.setOnClickListener(v->{
+            Intent intent = new Intent(ChatUi.this, MainActivity.class);
+            startActivity(intent);
+
+        });
 
         chatManager.setLoadCallback(() -> {
             runOnUiThread(() -> {
@@ -80,7 +119,7 @@ public class ChatUi extends AppCompatActivity {
         menu_btn.setOnClickListener(view -> {
             drawerLayout.openDrawer(GravityCompat.START);
         });
-
+        setupMenuLongClick();
         getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {
@@ -142,12 +181,17 @@ public class ChatUi extends AppCompatActivity {
         if (chat == null) {
             return;
         }
+        if (chat.getMessages().size()==0) {
+            imageView.setVisibility(View.VISIBLE);
+        }
         for (ChatMessages messages : chat.getMessages()) {
             if (messages.getRole() == ChatMessages.Role.USER) {
                 addUserMessage(messages.getContent());
+//                Toast.makeText(this, "view- "+messages.getContent(), Toast.LENGTH_SHORT).show();
             } else {
                 TextView aiView = addAiResponseView();
                 aiView.setText(messages.getContent());
+//                Toast.makeText(this, "view- "+messages.getContent(), Toast.LENGTH_SHORT).show();
             }
         }
         scrollToBottom();
@@ -162,6 +206,18 @@ public class ChatUi extends AppCompatActivity {
 
         // 1. Add User Message (Orange Bubble, Right Aligned)
         addUserMessage(message);
+        int sizeInPx = (int) (50 * linearLayout.getResources().getDisplayMetrics().density);
+        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(sizeInPx, sizeInPx);
+        params.gravity = Gravity.START;
+
+        lottieView.setLayoutParams(params);
+
+        // 3. Configure animation properties
+        lottieView.setAnimation("loader_th.json");
+        lottieView.setRepeatCount(LottieDrawable.INFINITE);
+        linearLayout.addView(lottieView);
+        lottieView.playAnimation();
+
 
         // 2. Prepare AI Response View (No Bubble, Left Aligned, Plain White Text)
         TextView responseView = addAiResponseView();
@@ -169,9 +225,13 @@ public class ChatUi extends AppCompatActivity {
         chatController.sendMessage(message, new ChatController.Callback() {
             @Override
             public void onToken(String token) {
+
                 runOnUiThread(() -> {
+                    lottieView.cancelAnimation();
+                    linearLayout.removeView(lottieView);
                     responseView.append(token);
                     scrollToBottom();
+
                 });
             }
 
@@ -204,6 +264,8 @@ public class ChatUi extends AppCompatActivity {
         textView.setText(messageText);
         textView.setTextSize(15);
         textView.setTextColor(Color.WHITE);
+        //lotti
+
 
         // Apply custom Orange Bubble Drawable
         textView.setBackground(ContextCompat.getDrawable(this, R.drawable.bg_user_message));
@@ -233,6 +295,7 @@ public class ChatUi extends AppCompatActivity {
      * Creates and adds an AI Response view with NO bubble background on the Left side.
      */
     private TextView addAiResponseView() {
+        if (imageView.getVisibility()==View.VISIBLE) imageView.setVisibility(View.GONE);
         TextView textView = new TextView(this);
         textView.setTextSize(15);
         textView.setTextColor(Color.WHITE); // Pure White Text
@@ -250,7 +313,7 @@ public class ChatUi extends AppCompatActivity {
         layoutParams.setMargins(
                 dpToPx(8),  // Margin left
                 dpToPx(6),  // Margin top
-                dpToPx(64), // Margin right so text leaves space on right
+                dpToPx(12), // Margin right so text leaves space on right
                 dpToPx(6)   // Margin bottom
         );
 
@@ -275,16 +338,18 @@ public class ChatUi extends AppCompatActivity {
         Menu menu = navigationView.getMenu();
         menu.clear();
         navigationView.inflateMenu(R.menu.drawer_menu);
-        navigationView.setItemBackgroundResource(R.drawable.chat_active_background);
+
 
         drawerChatIds.clear();
         chatDrawerIds.clear();
 
-        menu.add(R.id.chat_group, NEW_CHAT_ID, Menu.NONE, "Create New Chat +");
+       // menu.add(R.id.chat_group, NEW_CHAT_ID, Menu.NONE, "Create New Chat +");
 
         for (Chat chat : chatManager.getChats()) {
             int menuId = View.generateViewId();
-            menu.add(R.id.chat_group, menuId, Menu.NONE, chat.getTitle());
+
+            MenuItem menuItem = menu.add(R.id.chat_group, menuId, Menu.NONE, chat.getTitle());
+            menuItem.setCheckable(true);
             drawerChatIds.put(menuId, chat.getId());
             chatDrawerIds.put(chat.getId(), menuId);
         }
@@ -303,5 +368,95 @@ public class ChatUi extends AppCompatActivity {
         if (menuId == null) return;
         MenuItem item = navigationView.getMenu().findItem(menuId);
         if (item != null) item.setChecked(true);
+
+    }
+    private void showOrangeOptionsPopup(View anchorView, MenuItem menuItem) {
+        // 1. Inflate the custom XML layout (dialog_drawer_item_options.xml)
+        View customView = LayoutInflater.from(this).inflate(R.layout.menu_dialog, null);
+
+        // 2. Create the PopupWindow with wrap_content dimensions
+        PopupWindow popupWindow = new PopupWindow(
+                customView,
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                true // Enables touch outside dismiss behavior
+        );
+
+        // 3. Configure window visuals & elevation
+        popupWindow.setElevation(16f);
+        popupWindow.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        // 4. Bind view elements inside the custom layout
+        MaterialButton btnRename = customView.findViewById(R.id.btn_rename);
+        MaterialButton btnDelete = customView.findViewById(R.id.btn_delete);
+
+        // 5. Handle Rename button click
+        btnRename.setOnClickListener(v -> {
+            popupWindow.dismiss();
+//            showRenameDialog(menuItem);
+        });
+
+        // 6. Handle Delete button click
+        btnDelete.setOnClickListener(v -> {
+
+            Chat chat_n = chatManager.getActiveChat();
+//            Toast.makeText(this, ""+drawerChatIds.get(menuItem.getItemId()), Toast.LENGTH_SHORT).show();
+            if (chat_n.getId()==drawerChatIds.get(menuItem.getItemId())){
+                chatManager.deleteChat(drawerChatIds.get(menuItem.getItemId()));
+                chatManager.createNewChat();
+//                loadChatsIntoDrawer();
+//                loadActiveChats();
+                drawerLayout.closeDrawer(GravityCompat.START);
+
+            }else{
+                chatManager.deleteChat(drawerChatIds.get(menuItem.getItemId()));
+            }
+
+            Menu menu = navigationView.getMenu();
+            menu.clear();
+            navigationView.inflateMenu(R.menu.drawer_menu);
+
+
+//            drawerChatIds.clear();
+//            chatDrawerIds.clear();
+
+            // menu.add(R.id.chat_group, NEW_CHAT_ID, Menu.NONE, "Create New Chat +");
+
+            for (Chat chat : chatManager.getChats()) {
+                int menuId = View.generateViewId();
+
+                MenuItem menuItems = menu.add(R.id.chat_group, menuId, Menu.NONE, chat.getTitle());
+                menuItems.setCheckable(true);
+                drawerChatIds.put(menuId, chat.getId());
+                chatDrawerIds.put(chat.getId(), menuId);
+            }
+            loadActiveChats();
+            MarkActiveChat();
+
+//            Toast.makeText(this, ""+chat_n.getId(), Toast.LENGTH_SHORT).show();
+
+            popupWindow.dismiss();
+//            showDeleteConfirmation(menuItem);
+        });
+
+        // 7. Show popup anchored to the long-clicked navigation view item
+        // (xOffset and yOffset adjust alignment relative to drawer item bounds)
+        popupWindow.showAsDropDown(anchorView, 100, -anchorView.getHeight() / 2);
+    }
+    private void setupMenuLongClick() {
+        navigationView.post(() -> {
+            for (int i = 0; i < navigationView.getMenu().size(); i++) {
+                MenuItem menuItem = navigationView.getMenu().getItem(i);
+                View itemView = navigationView.findViewById(menuItem.getItemId());
+
+                if (itemView != null) {
+                    itemView.setOnLongClickListener(v -> {
+                        // Show the custom orange step 2 layout
+                        showOrangeOptionsPopup(v, menuItem);
+                        return true; // Return true to consume long click event
+                    });
+                }
+            }
+        });
     }
 }

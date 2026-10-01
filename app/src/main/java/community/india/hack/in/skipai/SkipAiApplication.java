@@ -1,6 +1,7 @@
 package community.india.hack.in.skipai;
 
 import android.app.Application;
+import android.content.Context;
 
 import androidx.room.Room;
 
@@ -14,6 +15,7 @@ public class SkipAiApplication extends Application {
     private ChatManager chatManager;
     private ChatController chatController;
     private SkipAiDatabase database;
+    private static  Context context;
     @Override
     public void onCreate(){
         super.onCreate();
@@ -23,6 +25,7 @@ public class SkipAiApplication extends Application {
 
         chatManager = new ChatManager(database.chatDao());
         chatController = new ChatController(this,chatManager);
+        context = getApplicationContext();
 
     }
     public OfflineAiManager getOfflineAiManager(){
@@ -40,6 +43,9 @@ public class SkipAiApplication extends Application {
     }
     public SkipAiDatabase getDatabase(){
         return database;
+    }
+    public static Context getContext() {
+        return context;
     }
 
 }

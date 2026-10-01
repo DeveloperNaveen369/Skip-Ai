@@ -37,25 +37,45 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="400dp"
+            android:fontFamily="serif"
+            android:src="@drawable/logo"
+            android:id="@+id/chat_logo"
+            android:textColor="@color/white"
+            android:visibility="gone"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </ImageView>
+
+
         <ScrollView
             android:id="@+id/message_scrollView"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="80dp"
             android:layout_marginBottom="8dp"
+
             android:clipToPadding="false"
             android:fillViewport="true"
             android:overScrollMode="never"
             app:layout_constraintBottom_toTopOf="@+id/input_card"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            >
+            app:layout_constraintTop_toTopOf="parent">
+
 
             <LinearLayout
                 android:id="@+id/message_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+
                 android:paddingHorizontal="16dp"
                 android:paddingVertical="8dp" />
 
@@ -92,13 +112,13 @@
                     android:layout_weight="1"
                     android:background="@null"
                     android:hint="Message AI..."
-                    android:textColorHint="#757575"
-                    android:textColor="#FFFFFF"
                     android:inputType="textMultiLine|textCapSentences"
                     android:maxLines="5"
                     android:minHeight="48dp"
                     android:paddingHorizontal="8dp"
                     android:paddingVertical="10dp"
+                    android:textColor="#FFFFFF"
+                    android:textColorHint="#757575"
                     android:textSize="15sp" />
 
                 <com.google.android.material.chip.Chip

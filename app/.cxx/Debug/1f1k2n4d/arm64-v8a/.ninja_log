@@ -1,42 +1,5 @@
 # ninja log v5
-1	1337	8121364279650833	CMakeFiles/qwen_native.dir/qwen_native.cpp.o	f84fa00f951dbbdd
-1346	1571	8121364281762371	C:/Users/My PC/StudioProjects/Skip-Ai/app/build/intermediates/cxx/Debug/1f1k2n4d/obj/arm64-v8a/libqwen_native.so	80848e9610156859
-8	1294	8121372438842431	CMakeFiles/qwen_native.dir/qwen_native.cpp.o	f84fa00f951dbbdd
-1295	1456	8121372440413596	C:/Users/My PC/StudioProjects/Skip-Ai/app/build/intermediates/cxx/Debug/1f1k2n4d/obj/arm64-v8a/libqwen_native.so	80848e9610156859
-8	1153	8121896494612181	CMakeFiles/qwen_native.dir/qwen_native.cpp.o	f84fa00f951dbbdd
-1154	1321	8121896496243809	C:/Users/My PC/StudioProjects/Skip-Ai/app/build/intermediates/cxx/Debug/1f1k2n4d/obj/arm64-v8a/libqwen_native.so	80848e9610156859
-15	1945	8121900410283047	CMakeFiles/qwen_native.dir/qwen_native.cpp.o	f84fa00f951dbbdd
-1946	2182	8121900412519213	C:/Users/My PC/StudioProjects/Skip-Ai/app/build/intermediates/cxx/Debug/1f1k2n4d/obj/arm64-v8a/libqwen_native.so	80848e9610156859
-6	1063	8121928803369660	CMakeFiles/qwen_native.dir/qwen_native.cpp.o	f84fa00f951dbbdd
-1063	1173	8121928804402307	C:/Users/My PC/StudioProjects/Skip-Ai/app/build/intermediates/cxx/Debug/1f1k2n4d/obj/arm64-v8a/libqwen_native.so	80848e9610156859
-8	972	8121944955377109	CMakeFiles/qwen_native.dir/qwen_native.cpp.o	f84fa00f951dbbdd
-972	1134	8121944956910495	C:/Users/My PC/StudioProjects/Skip-Ai/app/build/intermediates/cxx/Debug/1f1k2n4d/obj/arm64-v8a/libqwen_native.so	80848e9610156859
-8	1597	8121946746886802	CMakeFiles/qwen_native.dir/qwen_native.cpp.o	f84fa00f951dbbdd
-1599	1821	8121946749125768	C:/Users/My PC/StudioProjects/Skip-Ai/app/build/intermediates/cxx/Debug/1f1k2n4d/obj/arm64-v8a/libqwen_native.so	80848e9610156859
-5	867	8121952352543770	CMakeFiles/qwen_native.dir/qwen_native.cpp.o	f84fa00f951dbbdd
-868	992	8121952353720883	C:/Users/My PC/StudioProjects/Skip-Ai/app/build/intermediates/cxx/Debug/1f1k2n4d/obj/arm64-v8a/libqwen_native.so	80848e9610156859
-5	1873	8121953035341596	CMakeFiles/qwen_native.dir/qwen_native.cpp.o	f84fa00f951dbbdd
-1874	2076	8121953037368560	C:/Users/My PC/StudioProjects/Skip-Ai/app/build/intermediates/cxx/Debug/1f1k2n4d/obj/arm64-v8a/libqwen_native.so	80848e9610156859
-13	1695	8121971801764841	CMakeFiles/qwen_native.dir/qwen_native.cpp.o	f84fa00f951dbbdd
-1696	1954	8121971804201302	C:/Users/My PC/StudioProjects/Skip-Ai/app/build/intermediates/cxx/Debug/1f1k2n4d/obj/arm64-v8a/libqwen_native.so	80848e9610156859
-10	1912	8121976175142050	CMakeFiles/qwen_native.dir/qwen_native.cpp.o	f84fa00f951dbbdd
-1913	2111	8121976177161517	C:/Users/My PC/StudioProjects/Skip-Ai/app/build/intermediates/cxx/Debug/1f1k2n4d/obj/arm64-v8a/libqwen_native.so	80848e9610156859
-7	1274	8121987187095667	CMakeFiles/qwen_native.dir/qwen_native.cpp.o	f84fa00f951dbbdd
-1275	1416	8121987188480544	C:/Users/My PC/StudioProjects/Skip-Ai/app/build/intermediates/cxx/Debug/1f1k2n4d/obj/arm64-v8a/libqwen_native.so	80848e9610156859
-9	1664	8121998528822564	CMakeFiles/qwen_native.dir/qwen_native.cpp.o	f84fa00f951dbbdd
-1665	1923	8121998531216532	C:/Users/My PC/StudioProjects/Skip-Ai/app/build/intermediates/cxx/Debug/1f1k2n4d/obj/arm64-v8a/libqwen_native.so	80848e9610156859
-6	958	8122010454083796	CMakeFiles/qwen_native.dir/qwen_native.cpp.o	f84fa00f951dbbdd
-959	1091	8122010455315790	C:/Users/My PC/StudioProjects/Skip-Ai/app/build/intermediates/cxx/Debug/1f1k2n4d/obj/arm64-v8a/libqwen_native.so	80848e9610156859
-14	2549	8122222361485814	CMakeFiles/qwen_native.dir/qwen_native.cpp.o	f84fa00f951dbbdd
-2550	2875	8122222364738221	C:/Users/My PC/StudioProjects/Skip-Ai/app/build/intermediates/cxx/Debug/1f1k2n4d/obj/arm64-v8a/libqwen_native.so	80848e9610156859
-5	1134	8122777133281802	CMakeFiles/qwen_native.dir/qwen_native.cpp.o	f84fa00f951dbbdd
-1134	1296	8122777134811838	C:/Users/My PC/StudioProjects/Skip-Ai/app/build/intermediates/cxx/Debug/1f1k2n4d/obj/arm64-v8a/libqwen_native.so	80848e9610156859
-11	1726	8122783138877412	CMakeFiles/qwen_native.dir/qwen_native.cpp.o	f84fa00f951dbbdd
-1727	1987	8122783141349217	C:/Users/My PC/StudioProjects/Skip-Ai/app/build/intermediates/cxx/Debug/1f1k2n4d/obj/arm64-v8a/libqwen_native.so	80848e9610156859
-11	3447	8122807383202469	CMakeFiles/qwen_native.dir/qwen_native.cpp.o	f84fa00f951dbbdd
-3448	3868	8122807387157610	C:/Users/My PC/StudioProjects/Skip-Ai/app/build/intermediates/cxx/Debug/1f1k2n4d/obj/arm64-v8a/libqwen_native.so	80848e9610156859
-1	11	0	clean	770a39374fb4bb09
-120	5429	8123773320109553	CMakeFiles/qwen_native.dir/qwen_native.cpp.o	f84fa00f951dbbdd
-5431	6106	8123773326675493	C:/Users/My PC/StudioProjects/Skip-Ai/app/build/intermediates/cxx/Debug/1f1k2n4d/obj/arm64-v8a/libqwen_native.so	80848e9610156859
-18	3920	8123876319141259	CMakeFiles/qwen_native.dir/qwen_native.cpp.o	f84fa00f951dbbdd
-3922	4823	8123876328226178	C:/Users/My PC/StudioProjects/Skip-Ai/app/build/intermediates/cxx/Debug/1f1k2n4d/obj/arm64-v8a/libqwen_native.so	80848e9610156859
+0	19693	8125327462637817	CMakeFiles/qwen_native.dir/qwen_native.cpp.o	e5422d9e41b14186
+19703	20966	8125327472315994	C:/Users/gs252/StudioProjects/Skip-Ai/app/build/intermediates/cxx/Debug/1f1k2n4d/obj/arm64-v8a/libqwen_native.so	675a5c39298aae0a
+9	2046	8125442415365354	CMakeFiles/qwen_native.dir/qwen_native.cpp.o	e5422d9e41b14186
+2046	2308	8125442417395593	C:/Users/gs252/StudioProjects/Skip-Ai/app/build/intermediates/cxx/Debug/1f1k2n4d/obj/arm64-v8a/libqwen_native.so	675a5c39298aae0a

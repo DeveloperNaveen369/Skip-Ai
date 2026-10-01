@@ -1,6 +1,8 @@
 package community.india.hack.in.skipai;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.net.Uri;
@@ -14,6 +16,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -24,6 +27,7 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.switchmaterial.SwitchMaterial;
 
@@ -50,7 +54,9 @@ public class MainActivity extends AppCompatActivity {
     CardView github_btn;
     Button download_model ;
     ProgressBar download_progress_bar;
-    TextView download_per;
+    TextView download_per,text_mode_api,text_mode_local;
+    MaterialButton launch_chat;
+    LinearLayout down_cont,mode_cont;
     SwitchMaterial switchMaterial;
 
 
@@ -77,20 +83,47 @@ public class MainActivity extends AppCompatActivity {
         download_model  = findViewById(R.id.download_model_btn);
         download_progress_bar = findViewById(R.id.download_progress_bar);
         download_per = findViewById(R.id.download_percentage);
-
+        text_mode_api = findViewById(R.id.text_mode_api);
+        text_mode_local = findViewById(R.id.text_mode_local);
+        launch_chat = findViewById(R.id.test_ai);
+        down_cont = findViewById(R.id.down_cont);
+        mode_cont = findViewById(R.id.mode_cont);
         switchMaterial = findViewById(R.id.mode_switch);
         AiManager aiManager = new AiManager();
 
         OfflineAiManager offlineAi =  SkipAiApplication.getInstance().getOfflineAiManager();
         boolean modelDownloaded = offlineAi.isModelDownloaded();
         switchMaterial.setEnabled(modelDownloaded);
-        if (modelDownloaded){
+
+
+
+// 3. Put key-value pairs
+
+
+
+        if (modelDownloaded && user.getOfflinemode()){
+
             switchMaterial.setChecked(true);
-            aiManager.setOfflineMode(true);
+            text_mode_local.setTextColor(Color.RED);
+            text_mode_api.setTextColor(Color.RED);
+
+
 
         }else {
             switchMaterial.setChecked(false);
-            aiManager.setOfflineMode(false);
+            text_mode_local.setTextColor(Color.WHITE);
+            text_mode_api.setTextColor(Color.RED);
+
+        }
+        if (modelDownloaded) {
+            launch_chat.setVisibility(View.VISIBLE);
+            mode_cont.setVisibility(View.VISIBLE);
+            down_cont.setVisibility(View.GONE);
+
+        }else{
+            down_cont.setVisibility(View.VISIBLE);
+            mode_cont.setVisibility(View.GONE);
+            launch_chat.setVisibility(View.GONE);
         }
 
         String key = user.get_saved_data();
@@ -212,6 +245,11 @@ public class MainActivity extends AppCompatActivity {
                         download_model.setEnabled(false);
                         download_model.setVisibility(View.VISIBLE);
                         Log.d("OfflineMOdel", "onComplete: download completed ");
+                        user.setOfflinemode(true);
+                        switchMaterial.setChecked(true);
+                        launch_chat.setVisibility(View.VISIBLE);
+                        mode_cont.setVisibility(View.VISIBLE);
+                        down_cont.setVisibility(View.GONE);
                     });
 
                     return null;
@@ -281,7 +319,14 @@ public class MainActivity extends AppCompatActivity {
 
         switchMaterial.setOnCheckedChangeListener((buttonView, isChecked) -> {
 
-            aiManager.setOfflineMode(isChecked);
+            user.setOfflinemode(isChecked);
+            if (isChecked){
+                text_mode_local.setTextColor(Color.RED);;
+                text_mode_api.setTextColor(Color.WHITE);
+            }else{
+                text_mode_local.setTextColor(Color.WHITE);;
+                text_mode_api.setTextColor(Color.RED);
+            }
         });
 //        new Thread(() -> {
 //            try {

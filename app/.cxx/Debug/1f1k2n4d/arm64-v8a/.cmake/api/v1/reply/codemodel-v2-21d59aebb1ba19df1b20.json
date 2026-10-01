@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "qwen_native::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-qwen_native-Debug-4f9b12317f8036c9b4c4.json",
+					"jsonFile" : "target-qwen_native-Debug-882bab023f15e1f2de3c.json",
 					"name" : "qwen_native",
 					"projectIndex" : 0
 				}
@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/Users/My PC/StudioProjects/Skip-Ai/app/.cxx/Debug/1f1k2n4d/arm64-v8a",
-		"source" : "C:/Users/My PC/StudioProjects/Skip-Ai/app/src/main/cpp"
+		"build" : "C:/Users/gs252/StudioProjects/Skip-Ai/app/.cxx/Debug/1f1k2n4d/arm64-v8a",
+		"source" : "C:/Users/gs252/StudioProjects/Skip-Ai/app/src/main/cpp"
 	},
 	"version" : 
 	{

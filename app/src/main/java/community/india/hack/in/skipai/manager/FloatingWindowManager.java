@@ -336,8 +336,11 @@ public class FloatingWindowManager {
         aiManager.getResponse(context,options, selectedText, new AiManagerLIstener() {
             @Override
             public void onSucess(String response) {
-                if(write){ services.writeResponseToInput(response);
-                    write = false;
+                if(write){
+                    String textdata;
+                    textdata = services.readResponseFromInput();
+                    services.writeResponseToInput(textdata+response);
+//                    write = false;
                     bottom_view.setVisibility(View.VISIBLE);
                     currentWindowState = WindowState.OPCTIONS;
                     hideFloatingWindow();

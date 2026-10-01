@@ -10,6 +10,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import community.india.hack.in.skipai.manager.OfflineAiManager;
+
 public class Splace_screen extends AppCompatActivity {
 
     @Override
@@ -17,7 +19,10 @@ public class Splace_screen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_splace_screen);
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent ;
+        OfflineAiManager manager = new OfflineAiManager(getApplicationContext());
+        if (manager.isModelDownloaded()==true) intent = new Intent(this, ChatUi.class);
+        else intent = new Intent(this, MainActivity.class);
         new Handler().postDelayed(()->{
             startActivity(intent);
             finish();

@@ -3,7 +3,7 @@ set(CMAKE_HOST_SYSTEM_NAME "Windows")
 set(CMAKE_HOST_SYSTEM_VERSION "10.0.26200")
 set(CMAKE_HOST_SYSTEM_PROCESSOR "AMD64")
 
-include("C:/Users/My PC/AppData/Local/Android/Sdk/ndk/28.2.13676358/build/cmake/android.toolchain.cmake")
+include("C:/Users/gs252/AppData/Local/Android/Sdk/ndk/28.2.13676358/build/cmake/android.toolchain.cmake")
 
 set(CMAKE_SYSTEM "Android-1")
 set(CMAKE_SYSTEM_NAME "Android")

@@ -67,6 +67,12 @@ public class UserSettings {
         ).apply();
 
     }
+    public void setOfflinemode(Boolean mode){
+        preferences.edit().putBoolean("offline_mode",mode).apply();
+    }
+    public Boolean getOfflinemode(){
+        return  preferences.getBoolean("offline_mode",false);
+    }
     public String get_saved_language(){
         String lan = preferences.getString(
                 "language",
