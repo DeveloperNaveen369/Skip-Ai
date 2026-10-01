@@ -25,10 +25,17 @@ android {
         applicationId = "community.india.hack.in.skipai"
         minSdk = 28
         targetSdk = 36
-        versionCode = 2
-        versionName = "1.1"
-
+        versionCode = 3
+        versionName = "1.2"
+         ndk {
+            abiFilters += "arm64-v8a"
+        }
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+    externalNativeBuild {
+        cmake {
+            path = file("src/main/cpp/CMakeLists.txt")
+        }
     }
 
     signingConfigs {
@@ -57,7 +64,7 @@ buildTypes {
 }
 
 dependencies {
-    implementation(libs.activity.ktx)
+     implementation(libs.activity.ktx)
     implementation(libs.appcompat)
     implementation(libs.constraintlayout)
     implementation(libs.material)
@@ -65,9 +72,14 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.espresso.core)
     androidTestImplementation(libs.ext.junit)
+
     implementation("io.noties.markwon:core:4.6.2")
     implementation("androidx.security:security-crypto:1.1.0-alpha06")
-//    implementation("io.noties.markwon:ext-strikethrough:4.6.2")
-//    implementation("io.noties.markwon:ext-tables:4.6.2")
-//    implementation("io.noties.markwon:syntax-highlight:4.6.2")
+    implementation ("androidx.room:room-runtime:2.8.1")
+    annotationProcessor ("androidx.room:room-compiler:2.8.1")
+
+//    implementation("dev.ffmpegkit-maintained:llama-android:0.1.1")
+
+    implementation("com.airbnb.android:lottie:6.4.0")
+    implementation("com.google.mediapipe:tasks-genai:0.10.24")
 }
