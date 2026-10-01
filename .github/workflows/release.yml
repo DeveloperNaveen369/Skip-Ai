@@ -56,7 +56,7 @@ jobs:
           KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
           KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
         run: |
-          ./gradlew clean assembleRelease bundleRelease
+          ./gradlew assembleRelease bundleRelease
 
       - name: Check generated APK and AAB
         run: |
