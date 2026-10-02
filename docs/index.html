@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Skip AI - Privacy Policy</title>
+
+    <meta
+        name="description"
+        content="Privacy Policy for Skip AI, an open-source AI assistant for Android."
+    >
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.7;
+            background: #f6f7f9;
+            color: #202124;
+        }
+
+        header {
+            background: #111111;
+            color: white;
+            padding: 40px 20px;
+        }
+
+        header .container {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        header h1 {
+            margin: 0 0 8px;
+            font-size: 32px;
+        }
+
+        header p {
+            margin: 0;
+            color: #cccccc;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .policy {
+            background: white;
+            padding: 35px;
+            border-radius: 14px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+        }
+
+        h2 {
+            margin-top: 32px;
+            color: #111111;
+        }
+
+        h3 {
+            margin-top: 24px;
+        }
+
+        a {
+            color: #1769e0;
+            word-break: break-word;
+        }
+
+        .notice {
+            background: #f1f3f4;
+            padding: 18px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        ul {
+            padding-left: 25px;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 30px 20px;
+            }
+
+            header h1 {
+                font-size: 27px;
+            }
+
+            .policy {
+                padding: 22px;
+            }
+
+            main {
+                margin-top: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="container">
+        <h1>Skip AI</h1>
+        <p>Privacy Policy</p>
+    </div>
+</header>
+
+<main>
+    <article class="policy">
+
+        <p>
+            <strong>Effective Date:</strong> October 2, 2026
+        </p>
+
+        <p>
+            <strong>App Name:</strong> Skip AI<br>
+            <strong>Developer:</strong> Naveen Solanki<br>
+            <strong>Package:</strong> community.india.hack.in.skipai
+        </p>
+
+        <div class="notice">
+            Skip AI is an open-source Android AI assistant designed to provide
+            AI functionality directly from selected text. The application follows
+            a local-first approach and does not operate a developer-controlled
+            server for collecting users' conversations or selected text.
+        </div>
+
+        <h2>1. Information We Collect</h2>
+
+        <p>
+            Skip AI does not operate a backend service that collects or maintains
+            users' personal information, conversations, selected text, or
+            generated responses.
+        </p>
+
+        <p>
+            Depending on the features you use, information may be stored locally
+            on your Android device, including:
+        </p>
+
+        <ul>
+            <li>Chat conversations and chat history.</li>
+            <li>Chat titles and timestamps.</li>
+            <li>Application settings and preferences.</li>
+            <li>AI provider configuration.</li>
+            <li>Your OpenRouter API key, if you choose to use OpenRouter.</li>
+            <li>Downloaded offline AI model files.</li>
+        </ul>
+
+        <p>
+            This locally stored information is not automatically uploaded to
+            the developer's servers.
+        </p>
+
+        <h2>2. OpenRouter and Online AI Requests</h2>
+
+        <p>
+            Skip AI allows users to optionally use online AI services through
+            providers such as OpenRouter.
+        </p>
+
+        <p>
+            If you choose to use OpenRouter:
+        </p>
+
+        <ul>
+            <li>You provide your own OpenRouter API key.</li>
+            <li>The API key is stored locally on your device.</li>
+            <li>
+                Prompts, selected text, conversation context, or other content
+                required to generate an AI response may be transmitted to
+                OpenRouter.
+            </li>
+            <li>
+                OpenRouter and the applicable AI model provider may process
+                that information according to their own policies and terms.
+            </li>
+        </ul>
+
+        <p>
+            Skip AI does not control how third-party providers process information
+            after it has been transmitted to them.
+        </p>
+
+        <p>
+            OpenRouter:
+            <a href="https://openrouter.ai/" target="_blank" rel="noopener">
+                https://openrouter.ai/
+            </a>
+        </p>
+
+        <h2>3. OpenRouter API Keys</h2>
+
+        <p>
+            Users who choose to use OpenRouter may provide their own API key.
+            The key is stored locally on the user's device and is not intentionally
+            transmitted to the Skip AI developer.
+        </p>
+
+        <p>
+            Users are responsible for keeping their API keys confidential and
+            should never publicly share them.
+        </p>
+
+        <h2>4. Offline AI</h2>
+
+        <p>
+            Skip AI supports offline AI processing using a locally downloaded
+            AI model.
+        </p>
+
+        <p>
+            After a compatible model has been downloaded, AI generation can be
+            performed locally on the user's device without requiring an online
+            AI provider.
+        </p>
+
+        <ul>
+            <li>Prompts can remain on the device during offline generation.</li>
+            <li>No OpenRouter API key is required for offline generation.</li>
+            <li>The downloaded model is stored locally.</li>
+            <li>Performance depends on the user's device hardware.</li>
+        </ul>
+
+        <h2>5. Accessibility Service</h2>
+
+        <p>
+            Skip AI uses Android's AccessibilityService functionality to provide
+            its selected-text assistant feature.
+        </p>
+
+        <h3>Why AccessibilityService is used</h3>
+
+        <p>
+            The AccessibilityService is used to detect when the user selects
+            text in another application and display the Skip AI floating assistant
+            for that selected text.
+        </p>
+
+        <p>The service may be used to:</p>
+
+        <ul>
+            <li>Detect text-selection events.</li>
+            <li>Obtain text selected by the user when supported by the application.</li>
+            <li>Display the Skip AI floating interface.</li>
+            <li>
+                Allow actions such as asking AI about selected text,
+                summarizing, simplifying, and translating.
+            </li>
+            <li>
+                Assist with writing a generated response into a supported
+                text input when the user explicitly chooses that feature.
+            </li>
+        </ul>
+
+        <h3>What AccessibilityService is not used for</h3>
+
+        <p>
+            Skip AI does not use AccessibilityService for advertising tracking,
+            surveillance, or collecting a user's general activity across
+            applications.
+        </p>
+
+        <p>
+            The service is specifically used to provide the selected-text
+            assistant functionality.
+        </p>
+
+        <p>
+            Users can disable the AccessibilityService at any time through
+            Android Accessibility settings. Disabling it will prevent the
+            selected-text assistant functionality from working.
+        </p>
+
+        <h2>6. Overlay Permission</h2>
+
+        <p>
+            Skip AI may request Android's overlay permission so that it can
+            display its floating assistant over other applications after the
+            user grants permission.
+        </p>
+
+        <p>
+            The overlay is used to display the Skip AI interface and AI responses.
+        </p>
+
+        <h2>7. Chat History</h2>
+
+        <p>
+            Skip AI can store conversations locally using the Android device's
+            local database.
+        </p>
+
+        <p>
+            Local chat storage allows the application to restore conversations
+            after the application is closed and continue conversations across
+            application sessions.
+        </p>
+
+        <p>
+            The developer does not receive these locally stored conversations
+            through a Skip AI backend.
+        </p>
+
+        <p>
+            When an online AI provider is used, relevant conversation content
+            may be transmitted to that provider to generate a response.
+        </p>
+
+        <h2>8. AI-Generated Content</h2>
+
+        <p>
+            Skip AI provides AI-generated responses. AI responses may be
+            inaccurate, incomplete, outdated, or unsuitable for a particular
+            situation.
+        </p>
+
+        <p>
+            Important information should be independently verified.
+            Skip AI should not be considered a replacement for qualified
+            professional advice, including medical, legal, or financial advice.
+        </p>
+
+        <h2>9. Data Sharing</h2>
+
+        <p>
+            Skip AI does not sell, rent, or provide users' personal information
+            to advertisers.
+        </p>
+
+        <p>
+            Information may leave the device when the user intentionally uses
+            a third-party online AI provider. In that situation, relevant
+            information is transmitted to the selected provider to process
+            the request.
+        </p>
+
+        <h2>10. Advertising and Tracking</h2>
+
+        <p>
+            Skip AI does not intentionally use users' personal information for
+            behavioral advertising or cross-application advertising tracking.
+        </p>
+
+        <h2>11. Permissions</h2>
+
+        <ul>
+            <li>
+                <strong>Accessibility Service:</strong>
+                Used for selected-text detection and the floating AI assistant.
+            </li>
+
+            <li>
+                <strong>Overlay Permission:</strong>
+                Used to display the floating Skip AI interface over other apps.
+            </li>
+
+            <li>
+                <strong>Internet:</strong>
+                Used for online AI requests and downloading required resources,
+                including offline AI models.
+            </li>
+        </ul>
+
+        <h2>12. Security</h2>
+
+        <p>
+            Skip AI takes reasonable measures to protect locally stored
+            application information.
+        </p>
+
+        <p>
+            Where supported, sensitive credentials such as API keys are stored
+            using Android security mechanisms.
+        </p>
+
+        <p>
+            However, no software or storage system can be guaranteed to be
+            completely secure. Users are responsible for protecting their
+            Android device and API credentials.
+        </p>
+
+        <h2>13. Children's Privacy</h2>
+
+        <p>
+            Skip AI is not specifically designed to collect personal information
+            from children. We do not knowingly operate a service designed to
+            collect children's personal information.
+        </p>
+
+        <h2>14. Data Deletion</h2>
+
+        <p>
+            Since Skip AI does not maintain a developer-controlled database
+            containing users' conversations, users can manage locally stored
+            information through Android and the application.
+        </p>
+
+        <p>Users may:</p>
+
+        <ul>
+            <li>Delete conversations where the application provides that option.</li>
+            <li>Delete application data through Android settings.</li>
+            <li>Remove their locally stored API configuration.</li>
+            <li>Disable the AccessibilityService.</li>
+            <li>Uninstall Skip AI.</li>
+        </ul>
+
+        <p>
+            Information already transmitted to a third-party AI provider is
+            subject to that provider's own privacy policies and deletion
+            procedures.
+        </p>
+
+        <h2>15. Open Source and Transparency</h2>
+
+        <p>
+            Skip AI is a fully open-source project. The source code is publicly
+            available so users and developers can inspect how the application
+            works, including its data handling and AI functionality.
+        </p>
+
+        <p>
+            GitHub Repository:
+            <a
+                href="https://github.com/DeveloperNaveen369/Skip-Ai"
+                target="_blank"
+                rel="noopener"
+            >
+                https://github.com/DeveloperNaveen369/Skip-Ai
+            </a>
+        </p>
+
+        <h2>16. Changes to This Privacy Policy</h2>
+
+        <p>
+            This Privacy Policy may be updated when Skip AI's functionality,
+            data practices, or legal requirements change. The updated version
+            will include a revised effective date.
+        </p>
+
+        <h2>17. Contact</h2>
+
+        <p>
+            For privacy questions or concerns regarding Skip AI, please contact
+            the developer through the project's public GitHub repository:
+        </p>
+
+        <p>
+            <a
+                href="https://github.com/DeveloperNaveen369/Skip-Ai"
+                target="_blank"
+                rel="noopener"
+            >
+                Skip AI on GitHub
+            </a>
+        </p>
+
+    </article>
+</main>
+
+<footer>
+    © 2026 Skip AI · Open Source Android AI Assistant
+</footer>
+
+</body>
+</html>
