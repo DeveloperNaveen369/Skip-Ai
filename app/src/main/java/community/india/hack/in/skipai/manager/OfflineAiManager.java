@@ -53,7 +53,7 @@ public class OfflineAiManager {
     public boolean isModelDownloaded() {
 
 
-        return (userSettings.isModelDownloaded() && getModelFile().exists())?getModelFile().exists():false;
+        return getModelFile().exists();
 
     }
 }
