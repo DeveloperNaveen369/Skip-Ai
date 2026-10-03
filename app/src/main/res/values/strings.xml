@@ -10,43 +10,30 @@
         <item>Urdu</item>
         <item>Bengali</item>
     </string-array>
-    <string name="using_steps"> 1. Give Permission to Display Over- Other Apps \n
-    2.Choose Default Translation language \n
-        3.Paste your own Open-routers Api key (free-version is enough for your daily queries)
-        4. Close Skip Ai(from recent-apps also)\n
-        5.Go to Settings >> Accessibility >> Skip Ai>> turn on Accessibility permission \n
-        6. test it by selecting some text through anywhere
-
-        Note:- (in some devices)if you open the app and close it then accessibility services turn automatically off , so enable it after closing Skip Ai app.
-
-    </string>
+    <string name="using_steps">
+1. Give permission to Display Over Other Apps.\n
+2. Choose your default Translation language.\n
+3. Choose your AI engine:\n
+   • Online AI — Paste your own OpenRouter API key. The free version is enough for daily queries.\n
+   • On-Device AI — Download a supported local AI model and use it directly on your device.\n
+4. Close Skip AI completely (including from recent apps).\n
+5. Go to Settings &gt;&gt; Accessibility &gt;&gt; Skip AI &gt;&gt; turn on Accessibility permission.\n
+6. Test it by selecting text in any supported app. Skip AI will show the floating AI options.\n\n
+Note: Accessibility permission is required for the selected-text floating window feature. On some devices, Accessibility permission may turn off automatically when Skip AI is closed. If this happens, enable it again after closing the app.
+</string>
     <string name="accessibility_service_description">
-Skip AI is an open-source AI assistant designed to provide quick AI tools directly where you are working.
+Skip AI uses Android\'s Accessibility Service to detect selected text and active input fields across apps.
 
-Accessibility Service is required because Android provides selected-text and active-window information through the Accessibility framework. Skip AI uses this capability only for the following purposes:
+This allows Skip AI to:
+• Read text you select for Ask AI, Summarize, Simplify, or Translate.
+• Detect focused text inputs to write and insert AI responses.
+• Show the floating assistant over apps you use.
 
-• Detect text that you intentionally select in another application.
-• Read the selected text so you can use Ask AI, Summarize, Simplify, or Translate.
-• Identify the text input that currently has focus when you choose Write Response.
-• Insert the generated AI response into that focused text input when you explicitly choose Write Response.
-• Display the Skip AI floating assistant over the application you are currently using.
+Skip AI DOES NOT:
+• Perform automated gestures, touches, clicks, or screen navigation.
+• Access your camera, control device hardware, or perform payments.
+• Record your screen or continuously collect data in the background.
 
-Skip AI does NOT use Accessibility Service to:
-
-• Perform gestures, swipes, or touch gestures.
-• Automatically click buttons or controls in other applications.
-• Navigate to Home, Back, or Recents.
-• Take screenshots.
-• Access or control the camera.
-• Control device hardware.
-• Approve payments or perform financial transactions.
-• Automatically perform actions in other applications without your interaction.
-• Continuously send your entire screen to an AI service.
-
-Your selected text is processed only when you request an AI operation. Selected text may be sent to your configured AI provider to generate the requested response. AI providers may process information according to their own privacy policies and terms.
-
-Skip AI is an open-source project. Its source code is publicly available on GitHub so users and developers can inspect how the application works, including its Accessibility Service implementation.
-
-You remain in control of the Accessibility permission. Skip AI requires you to explicitly enable the Accessibility Service in Android Settings, and you can disable it at any time from your device settings.
+Your selected text is processed only when you request an AI action. Skip AI is open-source, and you can disable this permission at any time in Android Settings.
 </string>
 </resources>

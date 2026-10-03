@@ -10,13 +10,19 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 
+import community.india.hack.in.skipai.SkipAiApplication;
+import community.india.hack.in.skipai.UserSettings;
+
 public class OfflineAiManager {
 
     private final Context context;
     private static final String TAG = "OfflineAi";
 
+    UserSettings userSettings;
+
     public OfflineAiManager(Context context) {
         this.context = context.getApplicationContext();
+        userSettings = new UserSettings(context.getApplicationContext());
     }
 
     public synchronized void ensureLoaded() throws Exception {
@@ -45,6 +51,9 @@ public class OfflineAiManager {
     }
 
     public boolean isModelDownloaded() {
-        return getModelFile().exists();
+
+
+        return (userSettings.isModelDownloaded() && getModelFile().exists())?getModelFile().exists():false;
+
     }
 }

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -12,6 +13,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -24,6 +26,7 @@ import android.widget.Toast;
 import android.util.Log;
 
 import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
@@ -58,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
     MaterialButton launch_chat;
     LinearLayout down_cont,mode_cont;
     SwitchMaterial switchMaterial;
+    View AccessibilityDialog;
 
 
 
@@ -89,6 +93,8 @@ public class MainActivity extends AppCompatActivity {
         down_cont = findViewById(R.id.down_cont);
         mode_cont = findViewById(R.id.mode_cont);
         switchMaterial = findViewById(R.id.mode_switch);
+
+        AccessibilityDialog = getLayoutInflater().inflate(R.layout.accessibility_declaration,null);
         AiManager aiManager = new AiManager();
 
         OfflineAiManager offlineAi =  SkipAiApplication.getInstance().getOfflineAiManager();
@@ -222,6 +228,7 @@ public class MainActivity extends AppCompatActivity {
 
         download_model.setOnClickListener(v->{
             download_model.setEnabled(false);
+            download_model.setVisibility(View.GONE);
             download_progress_bar.setVisibility(View.VISIBLE);
 
 
@@ -250,6 +257,7 @@ public class MainActivity extends AppCompatActivity {
                         launch_chat.setVisibility(View.VISIBLE);
                         mode_cont.setVisibility(View.VISIBLE);
                         down_cont.setVisibility(View.GONE);
+                        user.setModelDownloaded(true);
                     });
 
                     return null;
@@ -386,8 +394,27 @@ public class MainActivity extends AppCompatActivity {
         return Settings.canDrawOverlays(this);
     }
     private void requestAccessibilityPermissionGranted(){
-        Intent intent = new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS);
-        startActivity(intent);
+        if (AccessibilityDialog.getParent() != null) {
+            ((ViewGroup) AccessibilityDialog.getParent()).removeView(AccessibilityDialog);
+        }
+        AlertDialog dialog = new AlertDialog.Builder(this).setView(AccessibilityDialog).create();
+        if (dialog.getWindow() != null) {
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        }
+
+        // 3. Find buttons inside your layout and set click actions
+        Button btnAllow = AccessibilityDialog.findViewById(R.id.btnAllow);
+        Button btnNotNow = AccessibilityDialog.findViewById(R.id.btnNotNow);
+        btnAllow.setOnClickListener(v->{
+            Intent intent = new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS);
+            startActivity(intent);
+            dialog.dismiss();
+        });
+        btnNotNow.setOnClickListener(v->{
+            dialog.dismiss();
+        });
+        dialog.show();
+
     }
     public void requestOverlayPermission(){
         Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:"+getPackageName()));

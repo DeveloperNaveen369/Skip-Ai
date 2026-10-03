@@ -73,6 +73,13 @@ public class UserSettings {
     public Boolean getOfflinemode(){
         return  preferences.getBoolean("offline_mode",false);
     }
+
+    public void setModelDownloaded(Boolean downloaded){
+        preferences.edit().putBoolean("model_downloaded",downloaded);
+    }
+    public Boolean isModelDownloaded(){
+        return preferences.getBoolean("model_downloaded",false);
+    }
     public String get_saved_language(){
         String lan = preferences.getString(
                 "language",

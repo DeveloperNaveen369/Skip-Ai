@@ -399,44 +399,56 @@ public class ChatUi extends AppCompatActivity {
         // 6. Handle Delete button click
         btnDelete.setOnClickListener(v -> {
 
-            Chat chat_n = chatManager.getActiveChat();
-//            Toast.makeText(this, ""+drawerChatIds.get(menuItem.getItemId()), Toast.LENGTH_SHORT).show();
-            if (chat_n.getId()==drawerChatIds.get(menuItem.getItemId())){
-                chatManager.deleteChat(drawerChatIds.get(menuItem.getItemId()));
+            String chatId = drawerChatIds.get(menuItem.getItemId());
+
+            if (chatId == null) {
+                popupWindow.dismiss();
+                return;
+            }
+
+            Chat activeChat = chatManager.getActiveChat();
+
+            if (activeChat != null && chatId.equals(activeChat.getId())) {
+
+                chatManager.deleteChat(chatId);
                 chatManager.createNewChat();
-//                loadChatsIntoDrawer();
-//                loadActiveChats();
+
                 drawerLayout.closeDrawer(GravityCompat.START);
 
-            }else{
-                chatManager.deleteChat(drawerChatIds.get(menuItem.getItemId()));
+            } else {
+
+                chatManager.deleteChat(chatId);
             }
+
+            // Rebuild drawer mappings
+            drawerChatIds.clear();
+            chatDrawerIds.clear();
 
             Menu menu = navigationView.getMenu();
             menu.clear();
             navigationView.inflateMenu(R.menu.drawer_menu);
 
-
-//            drawerChatIds.clear();
-//            chatDrawerIds.clear();
-
-            // menu.add(R.id.chat_group, NEW_CHAT_ID, Menu.NONE, "Create New Chat +");
-
             for (Chat chat : chatManager.getChats()) {
+
                 int menuId = View.generateViewId();
 
-                MenuItem menuItems = menu.add(R.id.chat_group, menuId, Menu.NONE, chat.getTitle());
-                menuItems.setCheckable(true);
+                MenuItem menuItemNew = menu.add(
+                        R.id.chat_group,
+                        menuId,
+                        Menu.NONE,
+                        chat.getTitle()
+                );
+
+                menuItemNew.setCheckable(true);
+
                 drawerChatIds.put(menuId, chat.getId());
                 chatDrawerIds.put(chat.getId(), menuId);
             }
+
             loadActiveChats();
             MarkActiveChat();
 
-//            Toast.makeText(this, ""+chat_n.getId(), Toast.LENGTH_SHORT).show();
-
             popupWindow.dismiss();
-//            showDeleteConfirmation(menuItem);
         });
 
         // 7. Show popup anchored to the long-clicked navigation view item

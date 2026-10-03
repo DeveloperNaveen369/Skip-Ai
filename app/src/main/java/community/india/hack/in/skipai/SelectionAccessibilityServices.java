@@ -111,7 +111,7 @@ public class SelectionAccessibilityServices extends AccessibilityService {
         CharSequence charSequence = focusedInputNode.getText();
         String text;
         if (charSequence!=null)  text = charSequence.toString();
-        else text = null;
+        else text = "";
         return  text;
     }
     public void checkOverlayPermission() {

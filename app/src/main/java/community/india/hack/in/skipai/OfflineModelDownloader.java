@@ -23,6 +23,7 @@ public class OfflineModelDownloader {
         this.context = context.getApplicationContext();
 
     }
+
     public void download(String url,DownloadListner listner){
         new Thread(()->{
             File modelDirectory = new File(context.getFilesDir(),"offline_models");
